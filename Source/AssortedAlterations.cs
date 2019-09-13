@@ -45,12 +45,12 @@ namespace AssortedAlterations
                 "separateCannibalMeals",
                 "separateCannibalMealsSetting_title".Translate(),
                 "separateCannibalMealsSetting_description".Translate(),
-                false);
+                true);
             separateInsectMeals = Settings.GetHandle(
                 "separateInsectMeals",
                 "separateInsectMealsSetting_title".Translate(),
                 "separateInsectMealsSetting_description".Translate(),
-                false);
+                true);
 
             var butchers = new List<ThingDef> {RecipeUsers.TableButcher, RecipeUsers.ButcherSpot};
             convenientButcherRecipes.OnValueChanged = value => UpdateRecipes(value, butchers, typeof(ConvenientButcherRecipes));
