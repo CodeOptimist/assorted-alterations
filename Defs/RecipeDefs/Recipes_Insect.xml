@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+  <RecipeDef Name="COAA_CookInsectMealBase" Abstract="True">
+    <workSkill>Cooking</workSkill>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_CookMeal</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Meat_Megaspider</li>
+      </thingDefs>
+      <categories>
+        <li>PlantFoodRaw</li>
+      </categories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_CookInsectMealBase">
+    <defName>COAA_CookInsectMealSimple</defName>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Meat_Megaspider</li>
+          </thingDefs>
+        </filter>
+        <count>0.5</count>
+      </li>
+    </ingredients>
+    <products>
+      <COAA_InsectMealSimple>1</COAA_InsectMealSimple>
+    </products>
+    <fixedIngredientFilter>
+      <disallowedCategories>
+        <li>PlantFoodRaw</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_CookInsectMealBase">
+    <defName>COAA_CookInsectMealFine</defName>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Meat_Megaspider</li>
+          </thingDefs>
+        </filter>
+        <count>0.25</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.25</count>
+      </li>
+    </ingredients>
+    <products>
+      <COAA_InsectMealFine>1</COAA_InsectMealFine>
+    </products>
+    <skillRequirements>
+      <Cooking>6</Cooking>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_CookInsectMealBase">
+    <defName>COAA_CookInsectMealLavish</defName>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Meat_Megaspider</li>
+          </thingDefs>
+        </filter>
+        <count>0.5</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.5</count>
+      </li>
+    </ingredients>
+    <products>
+      <COAA_InsectMealLavish>1</COAA_InsectMealLavish>
+    </products>
+    <skillRequirements>
+      <Cooking>8</Cooking>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_CookInsectMealBase">
+    <defName>COAA_CookInsectMealSurvival</defName>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Meat_Megaspider</li>
+          </thingDefs>
+        </filter>
+        <count>0.30</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.30</count>
+      </li>
+    </ingredients>
+    <products>
+      <COAA_InsectMealSurvivalPack>1</COAA_InsectMealSurvivalPack>
+    </products>
+    <skillRequirements>
+      <Cooking>8</Cooking>
+    </skillRequirements>
+    <researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_CookInsectMealBase">
+    <defName>COAA_MakeInsectPemmican</defName>
+    <workAmount>700</workAmount>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Meat_Megaspider</li>
+          </thingDefs>
+        </filter>
+        <count>0.25</count>
+      </li>
+      <li>
+        <filter>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </filter>
+        <count>0.25</count>
+      </li>
+    </ingredients>
+    <products>
+      <COAA_InsectPemmican>16</COAA_InsectPemmican>
+    </products>
+    <researchPrerequisite>Pemmican</researchPrerequisite>
+  </RecipeDef>
+
+</Defs>

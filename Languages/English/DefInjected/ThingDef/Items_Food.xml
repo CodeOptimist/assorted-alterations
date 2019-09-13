@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+
+  <COAA_CannibalMealSurvivalPack.label>packaged survival cannibal meal</COAA_CannibalMealSurvivalPack.label>
+  <COAA_CannibalMealSurvivalPack.description>A high-quality packaged cannibal meal, manufactured for use in survival situations. While it never rots, it can still deteriorate if left outside. Great for traveling.</COAA_CannibalMealSurvivalPack.description>
+
+  <COAA_InsectMealSurvivalPack.label>packaged survival insect meal</COAA_InsectMealSurvivalPack.label>
+  <COAA_InsectMealSurvivalPack.description>A high-quality packaged insect meal, manufactured for use in survival situations. While it never rots, it can still deteriorate if left outside. Great for traveling.</COAA_InsectMealSurvivalPack.description>
+
+  <COAA_CannibalMealSimple.label>simple cannibal meal</COAA_CannibalMealSimple.label>
+  <COAA_CannibalMealSimple.description>A simple meal quickly cooked from human meat.</COAA_CannibalMealSimple.description>
+
+  <COAA_InsectMealSimple.label>simple insect meal</COAA_InsectMealSimple.label>
+  <COAA_InsectMealSimple.description>A simple meal quickly cooked from insect meat.</COAA_InsectMealSimple.description>
+
+  <COAA_CannibalMealFine.label>fine cannibal meal</COAA_CannibalMealFine.label>
+  <COAA_CannibalMealFine.description>A complex dish assembled with care from human meat and a variety of ingredients.</COAA_CannibalMealFine.description>
+
+  <COAA_InsectMealFine.label>fine insect meal</COAA_InsectMealFine.label>
+  <COAA_InsectMealFine.description>A complex dish assembled with care from insect meat and a variety of ingredients.</COAA_InsectMealFine.description>
+
+  <COAA_CannibalMealLavish.label>lavish cannibal meal</COAA_CannibalMealLavish.label>
+  <COAA_CannibalMealLavish.description>A masterpiece of the cannibal culinary arts, this meal nourishes the body, mind, and soul.</COAA_CannibalMealLavish.description>
+
+  <COAA_InsectMealLavish.label>lavish insect meal</COAA_InsectMealLavish.label>
+  <COAA_InsectMealLavish.description>A masterpiece of the insect culinary arts, this meal nourishes the body, mind, and soul.</COAA_InsectMealLavish.description>
+
+  <COAA_CannibalPemmican.label>cannibal pemmican</COAA_CannibalPemmican.label>
+  <COAA_CannibalPemmican.description>A preserved mashed mixture of human fat and plant food. Tastes bland, but not offensive. It lasts a very long time without refrigeration. Great for traveling.</COAA_CannibalPemmican.description>
+
+  <COAA_InsectPemmican.label>insect pemmican</COAA_InsectPemmican.label>
+  <COAA_InsectPemmican.description>A preserved mashed mixture of insect fat and plant food. Tastes bland, but not offensive. It lasts a very long time without refrigeration. Great for traveling.</COAA_InsectPemmican.description>
+
+</LanguageData>

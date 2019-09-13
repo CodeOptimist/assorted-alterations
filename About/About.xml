@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+  <name>CodeOptimist's Assorted Alterations</name>
+  <author>CodeOptimist</author>
+  <url>https://codeoptimism.com/proj/83/</url>
+  <supportedVersions>
+    <li>1.0</li>
+  </supportedVersions>
+  <description>
+<![CDATA[
+<size=20>Quality of life modifications.</size>
+
+<color=teal><b>Deny distant material supply jobs.</b></color>
+<i>Dry those tears, builders will no longer traverse the entire map for a single component per heater.</i>
+Won't supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Essential with <color=grey><b><i>Mehni's</i> Pick Up And Haul</b></color>.)
+
+<color=teal><b>Set default ingredient radius.</b></color>
+<i>One less thing to click <b>every, single, time</b>.</i>
+
+<color=teal><b>Butcher small creatures to conserve freezer space.</b></color>
+<i>Leather and meat without worry.</i>
+Convenient recipe of <= 75 meat yielding animals.
+
+<color=teal><b>Separate butcher recipes to correctly count meat.</b></color>
+<i>Make just what you need; automate your longpig clothing line!</i>
+Different recipes to count various combinations of animal, human, and insect.
+
+<color=teal><b>Separate cannibal and insect meals to avoid ingredient mixing.</b></color>
+<i>Never again suffer through a single meal contaminating entire stacks.
+Feed your favorite brute just what she likes!
+Insects to breed and prisoners to feed!</i>
+
+Disallowed in starting food restrictions by default.
+
+To preserve balance these extra meal types have:
+* Disabled generation (e.g. resource pod drop, map prisoner cell spawn).
+* Disabled buying (trade stock generation).
+* Disabled scatter on map generation.
+<i>Only took 5 hours to study every call to <b>AllDefs</b>...</i>
+
+
+A heartfelt thanks for addressing these problems initially:
+* <color=grey><b><i>Rock5's</i> Butchers Can Count Meat</b></color>
+* <color=grey><b><i>Tremeloe's</i> Cook Cannibal Meal (IndividualStack)</b></color>
+
+<size=20>Hello World!</size>
+
+As a programmer who loves this game, I wanted to finally share the improvements and tweaks I've benefited from back to the community, just as so many other modders have improved my experience. I love the small modifications to vanilla that have a huge impact, and am proud to be in the company of others passionate about not necessarily new guns and mechanics and effects, but quality of life.
+- <color=silver><i>Christopher Galpin (CodeOptimist)</i></color>
+]]>
+  </description>
+</ModMetaData>

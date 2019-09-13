@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+
+  <COAA_CookInsectMealSimple.label>cook simple insect meal</COAA_CookInsectMealSimple.label>
+  <COAA_CookInsectMealSimple.description>Cook a straightforward meal from insect meat.</COAA_CookInsectMealSimple.description>
+  <COAA_CookInsectMealSimple.jobString>Cooking simple insect meal.</COAA_CookInsectMealSimple.jobString>
+
+  <COAA_CookInsectMealFine.label>cook fine insect meal</COAA_CookInsectMealFine.label>
+  <COAA_CookInsectMealFine.description>Cook a somewhat complex meal from a combination of insect meat and plant ingredients.</COAA_CookInsectMealFine.description>
+  <COAA_CookInsectMealFine.jobString>Cooking fine insect meal.</COAA_CookInsectMealFine.jobString>
+
+  <COAA_CookInsectMealLavish.label>cook lavish insect meal</COAA_CookInsectMealLavish.label>
+  <COAA_CookInsectMealLavish.description>Cook a very complex meal from a combination of insect meat and plant ingredients. Much of the ingredients are wasted.</COAA_CookInsectMealLavish.description>
+  <COAA_CookInsectMealLavish.jobString>Cooking lavish insect meal.</COAA_CookInsectMealLavish.jobString>
+
+  <COAA_CookInsectMealSurvival.label>cook packaged survival insect meal</COAA_CookInsectMealSurvival.label>
+  <COAA_CookInsectMealSurvival.description>Prepare a packaged survival meal from a combination of insect meat and plant ingredients. Much of the ingredients are wasted in the preservation process.</COAA_CookInsectMealSurvival.description>
+  <COAA_CookInsectMealSurvival.jobString>Cooking survival insect meal.</COAA_CookInsectMealSurvival.jobString>
+
+  <COAA_MakeInsectPemmican.label>make insect pemmican</COAA_MakeInsectPemmican.label>
+  <COAA_MakeInsectPemmican.description>Make insect pemmican, a preserved combination of insect meat and plant food. It doesn't taste amazing, but lasts a long time without refrigeration.</COAA_MakeInsectPemmican.description>
+  <COAA_MakeInsectPemmican.jobString>Making insect pemmican.</COAA_MakeInsectPemmican.jobString>
+
+</LanguageData>

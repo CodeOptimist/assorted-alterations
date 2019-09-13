@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+  <RecipeDef Name="COAA_ButcherCorpseFleshBase" Abstract="True">
+    <workAmount>450</workAmount>
+    <workSpeedStat>ButcheryFleshSpeed</workSpeedStat>
+    <workSkill>Cooking</workSkill>
+    <efficiencyStat>ButcheryFleshEfficiency</efficiencyStat>
+    <effectWorking>ButcherFlesh</effectWorking>
+    <soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Corpses</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <specialProducts>
+      <li>Butchery</li>
+    </specialProducts>
+    <fixedIngredientFilter>
+      <specialFiltersToDisallow>
+        <li>AllowRotten</li>
+      </specialFiltersToDisallow>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+      <categories>
+        <li>Corpses</li>
+      </categories>
+      <specialFiltersToDisallow>
+        <li>AllowCorpsesColonist</li>
+      </specialFiltersToDisallow>
+    </defaultIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
+    <defName>COAA_ButcherSmallCreatureFlesh</defName>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Corpse_Alphabeaver</li>
+        <li>Corpse_Boomrat</li>
+        <li>Corpse_Capybara</li>
+        <li>Corpse_Cassowary</li>
+        <li>Corpse_Cat</li>
+        <li>Corpse_Chicken</li>
+        <li>Corpse_Chinchilla</li>
+        <li>Corpse_Cobra</li>
+        <li>Corpse_Emu</li>
+        <li>Corpse_Fox_Arctic</li>
+        <li>Corpse_Fox_Fennec</li>
+        <li>Corpse_Fox_Red</li>
+        <li>Corpse_Gazelle</li>
+        <li>Corpse_Hare</li>
+        <li>Corpse_Iguana</li>
+        <li>Corpse_LabradorRetriever</li>
+        <li>Corpse_Lynx</li>
+        <li>Corpse_Monkey</li>
+        <li>Corpse_Pig</li>
+        <li>Corpse_Raccoon</li>
+        <li>Corpse_Rat</li>
+        <li>Corpse_Snowhare</li>
+        <li>Corpse_Squirrel</li>
+        <li>Corpse_Tortoise</li>
+        <li>Corpse_Turkey</li>
+        <li>Corpse_WildBoar</li>
+        <li>Corpse_YorkshireTerrier</li>
+
+        <li>Corpse_Megascarab</li>
+        <li>Corpse_Spelopede</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
+    <defName>COAA_ButcherAnimalFlesh</defName>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesAnimal</li>
+      </categories>
+      <disallowedCategories>
+        <li>CorpsesInsect</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
+    <defName>COAA_ButcherInsectFlesh</defName>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesInsect</li>
+      </categories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
+    <defName>COAA_ButcherHumanFlesh</defName>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesHumanlike</li>
+      </categories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
+    <defName>COAA_ButcherAnimalInsectFlesh</defName>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesAnimal</li>
+      </categories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
+    <defName>COAA_ButcherAnimalHumanFlesh</defName>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesAnimal</li>
+        <li>CorpsesHumanlike</li>
+      </categories>
+      <disallowedCategories>
+        <li>CorpsesInsect</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
+    <defName>COAA_ButcherInsectHumanFlesh</defName>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesInsect</li>
+        <li>CorpsesHumanlike</li>
+      </categories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+</Defs>
