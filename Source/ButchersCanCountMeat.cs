@@ -1,4 +1,5 @@
-﻿using Harmony;
+﻿using System.Collections.Generic;
+using Harmony;
 using Reloader;
 using RimWorld;
 using Verse;
@@ -9,6 +10,31 @@ namespace AssortedAlterations
     {
         static class ButchersCanCountMeat
         {
+            static List<RecipeDef> countableRecipes, animalRecipes, insectRecipes, humanRecipes;
+            static List<ThingDef> butchers;
+
+            public static void DefsLoaded()
+            {
+                countableRecipes = DefsFromType<RecipeDef>(typeof(CountableMeatRecipes));
+                animalRecipes = new List<RecipeDef>
+                    {CountableMeatRecipes.COAA_ButcherAnimalFlesh, CountableMeatRecipes.COAA_ButcherAnimalInsectFlesh, CountableMeatRecipes.COAA_ButcherAnimalHumanFlesh};
+                insectRecipes = new List<RecipeDef>
+                    {CountableMeatRecipes.COAA_ButcherInsectFlesh, CountableMeatRecipes.COAA_ButcherAnimalInsectFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh};
+                humanRecipes = new List<RecipeDef>
+                    {CountableMeatRecipes.COAA_ButcherHumanFlesh, CountableMeatRecipes.COAA_ButcherAnimalHumanFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh};
+                butchers = new List<ThingDef> { RecipeUsers.TableButcher, RecipeUsers.ButcherSpot };
+            }
+
+            public static void OnValueChanged_countableMeatRecipes(bool newvalue)
+            {
+                UpdateRecipes(newvalue, butchers, typeof(CountableMeatRecipes));
+            }
+
+            public static void OnValueChanged_convenientButcherRecipes(bool newvalue)
+            {
+                UpdateRecipes(newvalue, butchers, typeof(ConvenientButcherRecipes));
+            }
+
             [HarmonyPatch(typeof(RecipeWorkerCounter), "CanCountProducts")]
             class RecipeWorkerCounter_CanCountProducts_Patch
             {
@@ -18,7 +44,7 @@ namespace AssortedAlterations
                 [HarmonyPostfix]
                 static void AllowCountMeat(ref bool __result, Bill_Production bill)
                 {
-                    if (bill.recipe.specialProducts != null && bill.recipe.specialProducts.Contains(SpecialProductType.Butchery) && bill.recipe.defName.StartsWith("COAA_"))
+                    if (countableRecipes.Contains(bill.recipe))
                         __result = true;
                 }
             }
@@ -32,36 +58,21 @@ namespace AssortedAlterations
                 [HarmonyPrefix]
                 static bool CountMeat(ref int __result, Bill_Production bill)
                 {
-                    if (bill.recipe.specialProducts == null || !bill.recipe.specialProducts.Contains(SpecialProductType.Butchery) || !bill.recipe.defName.StartsWith("COAA_"))
+                    if (!countableRecipes.Contains(bill.recipe))
                         return true;
 
-                    var recipe = bill.recipe.defName;
-                    var isAnimalRecipe = recipe == "COAA_ButcherAnimalFlesh" || recipe == "COAA_ButcherAnimalInsectFlesh" || recipe == "COAA_ButcherAnimalHumanFlesh";
-                    var isInsectRecipe = recipe == "COAA_ButcherInsectFlesh" || recipe == "COAA_ButcherAnimalInsectFlesh" || recipe == "COAA_ButcherInsectHumanFlesh";
-                    var isHumanRecipe = recipe == "COAA_ButcherHumanFlesh" || recipe == "COAA_ButcherAnimalHumanFlesh" || recipe == "COAA_ButcherInsectHumanFlesh";
-                    var isCustomRecipe = isAnimalRecipe || isInsectRecipe || isHumanRecipe;
+                    var meatTypes = new List<List<ThingDef>>();
+                    if (insectRecipes.Contains(bill.recipe))
+                        meatTypes.Add(insectMeats);
+                    if (humanRecipes.Contains(bill.recipe))
+                        meatTypes.Add(humanMeats);
+                    if (animalRecipes.Contains(bill.recipe))
+                        meatTypes.Add(animalMeats);
 
                     var count = 0;
-                    foreach (var child in ThingCategoryDefOf.MeatRaw.childThingDefs)
-                    {
-                        var isCounted = true;
-                        if (isCustomRecipe)
-                            switch (child.defName)
-                            {
-                                case "Meat_Human":
-                                    isCounted = isHumanRecipe;
-                                    break;
-                                case "Meat_Megaspider":
-                                    isCounted = isInsectRecipe;
-                                    break;
-                                default:
-                                    isCounted = isAnimalRecipe;
-                                    break;
-                            }
-
-                        if (isCounted)
-                            count += bill.Map.resourceCounter.GetCount(child);
-                    }
+                    foreach (var meatType in meatTypes)
+                    foreach (var meat in meatType)
+                        count += bill.Map.resourceCounter.GetCount(meat);
 
                     __result = count;
                     return false;

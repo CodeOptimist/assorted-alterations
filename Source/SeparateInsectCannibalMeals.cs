@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Harmony;
 using Reloader;
 using RimWorld;
@@ -11,7 +10,7 @@ namespace AssortedAlterations
     {
         static class SeparateInsectCannibalMeals
         {
-            static List<ThingDef> cannibalFoods, insectFoods, stoves, campfire, insectMeats, humanMeats;
+            static List<ThingDef> cannibalFoods, insectFoods, stoves, campfire;
 
             public static void DefsLoaded()
             {
@@ -20,11 +19,7 @@ namespace AssortedAlterations
                 stoves = new List<ThingDef> {RecipeUsers.ElectricStove, RecipeUsers.FueledStove};
                 campfire = new List<ThingDef> {ThingDefOf.Campfire};
 
-                var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
-                insectMeats = meats.Where(x => x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
-                humanMeats = meats.Where(x => x.ingestible.sourceDef.race.Humanlike).ToList();
-
-                foreach (var meat in meats)
+                foreach (var meat in ThingCategoryDefOf.MeatRaw.childThingDefs)
                 {
                     foreach (var recipe in DefsFromType<RecipeDef>(typeof(InsectRecipes)))
                         recipe.fixedIngredientFilter.SetAllow(meat, insectMeats.Contains(meat));

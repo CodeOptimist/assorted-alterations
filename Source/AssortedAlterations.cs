@@ -4,22 +4,29 @@ using System.Linq;
 using System.Reflection;
 using HugsLib;
 using HugsLib.Settings;
+using RimWorld;
 using Verse;
 
 namespace AssortedAlterations
 {
     partial class AssortedAlterations : ModBase
     {
-        public static SettingHandle<float> defaultSearchIngredientRadius;
-        public static SettingHandle<bool> denyDistantSupplyJobs;
-        public static SettingHandle<bool> countableMeatRecipes;
-        public static SettingHandle<bool> convenientButcherRecipes;
-        public static SettingHandle<bool> separateCannibalMeals;
-        public static SettingHandle<bool> separateInsectMeals;
+        static SettingHandle<float> defaultSearchIngredientRadius;
+        static SettingHandle<bool> denyDistantSupplyJobs;
+        static SettingHandle<bool> countableMeatRecipes;
+        static SettingHandle<bool> convenientButcherRecipes;
+        static SettingHandle<bool> separateCannibalMeals;
+        static SettingHandle<bool> separateInsectMeals;
+        static List<ThingDef> insectMeats, humanMeats, animalMeats;
         public override string ModIdentifier => "COAssortedAlterations";
 
         public override void DefsLoaded()
         {
+            var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
+            insectMeats = meats.Where(x => x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
+            humanMeats = meats.Where(x => x.ingestible.sourceDef.race.Humanlike).ToList();
+            animalMeats = meats.Except(insectMeats).Except(humanMeats).ToList();
+
             defaultSearchIngredientRadius = Settings.GetHandle(
                 "defaultSearchIngredientRadius",
                 "defaultSearchIngredientRadiusSetting_title".Translate(),
@@ -51,10 +58,10 @@ namespace AssortedAlterations
                 "separateInsectMealsSetting_description".Translate(),
                 true);
 
-            var butchers = new List<ThingDef> {RecipeUsers.TableButcher, RecipeUsers.ButcherSpot};
-            convenientButcherRecipes.OnValueChanged = value => UpdateRecipes(value, butchers, typeof(ConvenientButcherRecipes));
+            ButchersCanCountMeat.DefsLoaded();
+            convenientButcherRecipes.OnValueChanged += ButchersCanCountMeat.OnValueChanged_convenientButcherRecipes;
             convenientButcherRecipes.OnValueChanged(convenientButcherRecipes);
-            countableMeatRecipes.OnValueChanged = value => UpdateRecipes(value, butchers, typeof(CountableMeatRecipes));
+            countableMeatRecipes.OnValueChanged += ButchersCanCountMeat.OnValueChanged_countableMeatRecipes;
             countableMeatRecipes.OnValueChanged(countableMeatRecipes);
 
             SeparateInsectCannibalMeals.DefsLoaded();
