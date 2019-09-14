@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Harmony;
 using Reloader;
 using RimWorld;
@@ -11,8 +11,53 @@ namespace AssortedAlterations
     {
         static class SeparateInsectCannibalMeals
         {
-            static readonly List<ThingDef> cannibalFoods = DefsFromType<ThingDef>(typeof(CannibalFoods));
-            static readonly List<ThingDef> insectFoods = DefsFromType<ThingDef>(typeof(InsectFoods));
+            static List<ThingDef> cannibalFoods, insectFoods, stoves, campfire, insectMeats, humanMeats;
+
+            public static void DefsLoaded()
+            {
+                cannibalFoods = DefsFromType<ThingDef>(typeof(CannibalFoods));
+                insectFoods = DefsFromType<ThingDef>(typeof(InsectFoods));
+                stoves = new List<ThingDef> {RecipeUsers.ElectricStove, RecipeUsers.FueledStove};
+                campfire = new List<ThingDef> {ThingDefOf.Campfire};
+
+                var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
+                insectMeats = meats.Where(x => x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
+                humanMeats = meats.Where(x => x.ingestible.sourceDef.race.Humanlike).ToList();
+
+                foreach (var meat in meats)
+                {
+                    foreach (var recipe in DefsFromType<RecipeDef>(typeof(InsectRecipes)))
+                        recipe.fixedIngredientFilter.SetAllow(meat, insectMeats.Contains(meat));
+                    foreach (var recipe in DefsFromType<RecipeDef>(typeof(CannibalRecipes)))
+                        recipe.fixedIngredientFilter.SetAllow(meat, humanMeats.Contains(meat));
+                }
+            }
+
+#if DEBUG
+            [ReloadMethod]
+#endif
+            public static void OnValueChanged_separateInsectMeals(bool newvalue)
+            {
+                UpdateRecipes(newvalue, stoves, typeof(InsectRecipes));
+                UpdateRecipes(newvalue, campfire, new List<RecipeDef> {InsectRecipes.COAA_CookInsectMealSimple, InsectRecipes.COAA_MakeInsectPemmican});
+
+                foreach (var recipe in DefsFromType<RecipeDef>(typeof(FoodRecipes)))
+                foreach (var insectMeat in insectMeats)
+                    recipe.fixedIngredientFilter.SetAllow(insectMeat, !newvalue);
+            }
+
+#if DEBUG
+            [ReloadMethod]
+#endif
+            public static void OnValueChanged_separateCannibalMeals(bool newvalue)
+            {
+                UpdateRecipes(newvalue, stoves, typeof(CannibalRecipes));
+                UpdateRecipes(newvalue, campfire, new List<RecipeDef> {CannibalRecipes.COAA_CookCannibalMealSimple, CannibalRecipes.COAA_MakeCannibalPemmican});
+
+                foreach (var recipe in DefsFromType<RecipeDef>(typeof(FoodRecipes)))
+                foreach (var humanMeat in humanMeats)
+                    recipe.fixedIngredientFilter.SetAllow(humanMeat, !newvalue);
+            }
 
             [HarmonyPatch(typeof(FoodRestrictionDatabase), "GenerateStartingFoodRestrictions")]
             static class FoodRestrictionDatabase_GenerateStartingFoodRestrictions_Patch

@@ -16,7 +16,7 @@
 Won't supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Essential with <color=grey><b><i>Mehni's</i> Pick Up And Haul</b></color>.)
 
 <color=teal><b>Set default ingredient radius.</b></color>
-<i>One less thing to click <b>every, single, time</b>.</i>
+<i>One less thing to do <b>every, single, time</b>.</i>
 
 <color=teal><b>Butcher small creatures to conserve freezer space.</b></color>
 <i>Leather and meat without worry.</i>
@@ -31,6 +31,7 @@ Different recipes to count various combinations of animal, human, and insect.
 Feed your favorite brute just what she likes!
 Insects to breed and prisoners to feed!</i>
 
+Supports non-vanilla insectoid and humanlike.
 Disallowed in starting food restrictions by default.
 
 To preserve balance these extra meal types have:

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using HugsLib;
 using HugsLib.Settings;
-using RimWorld;
 using Verse;
 
 namespace AssortedAlterations
@@ -57,25 +56,11 @@ namespace AssortedAlterations
             convenientButcherRecipes.OnValueChanged(convenientButcherRecipes);
             countableMeatRecipes.OnValueChanged = value => UpdateRecipes(value, butchers, typeof(CountableMeatRecipes));
             countableMeatRecipes.OnValueChanged(countableMeatRecipes);
-            var stoves = new List<ThingDef> {RecipeUsers.ElectricStove, RecipeUsers.FueledStove};
-            var campfire = new List<ThingDef> {ThingDefOf.Campfire};
-            separateCannibalMeals.OnValueChanged = value =>
-            {
-                UpdateRecipes(value, stoves, typeof(CannibalRecipes));
-                UpdateRecipes(value, campfire, new List<RecipeDef> {CannibalRecipes.COAA_CookCannibalMealSimple, CannibalRecipes.COAA_MakeCannibalPemmican});
 
-                foreach (var recipe in DefsFromType<RecipeDef>(typeof(FoodRecipes)))
-                    recipe.fixedIngredientFilter.SetAllow(Meats.Meat_Human, !value);
-            };
+            SeparateInsectCannibalMeals.DefsLoaded();
+            separateCannibalMeals.OnValueChanged += SeparateInsectCannibalMeals.OnValueChanged_separateCannibalMeals;
             separateCannibalMeals.OnValueChanged(separateCannibalMeals);
-            separateInsectMeals.OnValueChanged = value =>
-            {
-                UpdateRecipes(value, stoves, typeof(InsectRecipes));
-                UpdateRecipes(value, campfire, new List<RecipeDef> {InsectRecipes.COAA_CookInsectMealSimple, InsectRecipes.COAA_MakeInsectPemmican});
-
-                foreach (var recipe in DefsFromType<RecipeDef>(typeof(FoodRecipes)))
-                    recipe.fixedIngredientFilter.SetAllow(Meats.Meat_Megaspider, !value);
-            };
+            separateInsectMeals.OnValueChanged += SeparateInsectCannibalMeals.OnValueChanged_separateInsectMeals;
             separateInsectMeals.OnValueChanged(separateInsectMeals);
         }
 

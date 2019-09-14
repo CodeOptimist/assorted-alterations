@@ -8,6 +8,17 @@
   </HugsLib.UpdateFeatureDef>
 
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>COAssortedAlterations_1_1_0</defName>
+    <assemblyVersion>1.1.0</assemblyVersion>
+    <content>
+      <![CDATA[
+Cannibal and insect meal separation now supports non-vanilla insectoid and humanlike.
+<i>Thanks @lbmaian for the suggestion.</i>
+    ]]>
+    </content>
+  </HugsLib.UpdateFeatureDef>
+
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_0_0</defName>
     <assemblyVersion>1.0.0</assemblyVersion>
     <content>

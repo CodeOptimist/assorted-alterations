@@ -36,18 +36,6 @@ namespace AssortedAlterations
         }
 
         [DefOf]
-        static class Meats
-        {
-            public static ThingDef Meat_Human;
-            public static ThingDef Meat_Megaspider;
-
-            static Meats()
-            {
-                DefOfHelper.EnsureInitializedInCtor(typeof(Meats));
-            }
-        }
-
-        [DefOf]
         static class ConvenientButcherRecipes
         {
             public static RecipeDef COAA_ButcherSmallCreatureFlesh;
