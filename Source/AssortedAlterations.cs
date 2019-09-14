@@ -58,6 +58,8 @@ namespace AssortedAlterations
                 "separateInsectMealsSetting_description".Translate(),
                 true);
 
+            ButcherSmallCreature.DefsLoaded();
+
             ButchersCanCountMeat.DefsLoaded();
             convenientButcherRecipes.OnValueChanged += ButchersCanCountMeat.OnValueChanged_convenientButcherRecipes;
             convenientButcherRecipes.OnValueChanged(convenientButcherRecipes);

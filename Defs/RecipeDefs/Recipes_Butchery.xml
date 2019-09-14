@@ -40,38 +40,9 @@
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherSmallCreatureFlesh</defName>
     <fixedIngredientFilter>
-      <thingDefs>
-        <li>Corpse_Alphabeaver</li>
-        <li>Corpse_Boomrat</li>
-        <li>Corpse_Capybara</li>
-        <li>Corpse_Cassowary</li>
-        <li>Corpse_Cat</li>
-        <li>Corpse_Chicken</li>
-        <li>Corpse_Chinchilla</li>
-        <li>Corpse_Cobra</li>
-        <li>Corpse_Emu</li>
-        <li>Corpse_Fox_Arctic</li>
-        <li>Corpse_Fox_Fennec</li>
-        <li>Corpse_Fox_Red</li>
-        <li>Corpse_Gazelle</li>
-        <li>Corpse_Hare</li>
-        <li>Corpse_Iguana</li>
-        <li>Corpse_LabradorRetriever</li>
-        <li>Corpse_Lynx</li>
-        <li>Corpse_Monkey</li>
-        <li>Corpse_Pig</li>
-        <li>Corpse_Raccoon</li>
-        <li>Corpse_Rat</li>
-        <li>Corpse_Snowhare</li>
-        <li>Corpse_Squirrel</li>
-        <li>Corpse_Tortoise</li>
-        <li>Corpse_Turkey</li>
-        <li>Corpse_WildBoar</li>
-        <li>Corpse_YorkshireTerrier</li>
-
-        <li>Corpse_Megascarab</li>
-        <li>Corpse_Spelopede</li>
-      </thingDefs>
+      <categories>
+        <li>Corpses</li>
+      </categories>
     </fixedIngredientFilter>
   </RecipeDef>
 

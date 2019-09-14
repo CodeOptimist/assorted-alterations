@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="AssortedAlterations.cs" />
     <Compile Include="ButchersCanCountMeat.cs" />
+    <Compile Include="ButcherSmallCreature.cs" />
     <Compile Include="Defs.cs" />
     <Compile Include="IngredientSearchRadiusDefault.cs" />
     <Compile Include="DenyDistantSupplyJobs.cs" />

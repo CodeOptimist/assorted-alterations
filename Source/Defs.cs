@@ -7,6 +7,17 @@ namespace AssortedAlterations
     partial class AssortedAlterations
     {
         [DefOf]
+        static class SpecialFilter
+        {
+            public static SpecialThingFilterDef AllowRotten;
+
+            static SpecialFilter()
+            {
+                DefOfHelper.EnsureInitializedInCtor(typeof(SpecialFilter));
+            }
+        }
+
+        [DefOf]
         static class RecipeUsers
         {
             public static ThingDef TableButcher;
