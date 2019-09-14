@@ -9,38 +9,39 @@ namespace AssortedAlterations
 {
     partial class AssortedAlterations
     {
-        static readonly List<ThingDef> cannibalFoods = DefsFromType<ThingDef>(typeof(CannibalFoods));
-        static readonly List<ThingDef> insectFoods = DefsFromType<ThingDef>(typeof(InsectFoods));
-
-        [HarmonyPatch(typeof(FoodRestrictionDatabase), "GenerateStartingFoodRestrictions")]
-        [SuppressMessage("ReSharper", "UnusedMember.Local")]
-        static class FoodRestrictionDatabase_GenerateStartingFoodRestrictions_Patch
+        static class SeparateInsectCannibalMeals
         {
-#if DEBUG
-            [ReloadMethod]
-#endif
-            [HarmonyPostfix]
-            static void ExcludeFromStartingRestrictions(FoodRestrictionDatabase __instance)
+            static readonly List<ThingDef> cannibalFoods = DefsFromType<ThingDef>(typeof(CannibalFoods));
+            static readonly List<ThingDef> insectFoods = DefsFromType<ThingDef>(typeof(InsectFoods));
+
+            [HarmonyPatch(typeof(FoodRestrictionDatabase), "GenerateStartingFoodRestrictions")]
+            static class FoodRestrictionDatabase_GenerateStartingFoodRestrictions_Patch
             {
-                foreach (var restriction in __instance.AllFoodRestrictions)
+#if DEBUG
+                [ReloadMethod]
+#endif
+                [HarmonyPostfix]
+                static void ExcludeFromStartingRestrictions(FoodRestrictionDatabase __instance)
                 {
-                    foreach (var food in cannibalFoods)
-                        restriction.filter.SetAllow(food, false);
-                    foreach (var food in insectFoods)
-                        restriction.filter.SetAllow(food, false);
+                    foreach (var restriction in __instance.AllFoodRestrictions)
+                    {
+                        foreach (var food in cannibalFoods)
+                            restriction.filter.SetAllow(food, false);
+                        foreach (var food in insectFoods)
+                            restriction.filter.SetAllow(food, false);
+                    }
                 }
             }
-        }
 
-        [HarmonyPatch(typeof(ThingSetMakerUtility), "CanGenerate")]
-        [SuppressMessage("ReSharper", "UnusedMember.Local")]
-        static class ThingSetMakerUtility_CanGenerate_Patch
-        {
-            [HarmonyPostfix]
-            static void DenyGeneration(ref bool __result, ThingDef thingDef)
+            [HarmonyPatch(typeof(ThingSetMakerUtility), "CanGenerate")]
+            static class ThingSetMakerUtility_CanGenerate_Patch
             {
-                if (cannibalFoods.Contains(thingDef) || insectFoods.Contains(thingDef))
-                    __result = false;
+                [HarmonyPostfix]
+                static void DenyGeneration(ref bool __result, ThingDef thingDef)
+                {
+                    if (cannibalFoods.Contains(thingDef) || insectFoods.Contains(thingDef))
+                        __result = false;
+                }
             }
         }
     }
