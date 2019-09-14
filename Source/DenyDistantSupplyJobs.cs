@@ -37,6 +37,8 @@ namespace AssortedAlterations
                 [SuppressMessage("ReSharper", "UnusedParameter.Local")]
                 static void DenySupplyingDistantResources(ref bool __result, Pawn pawn, ThingDefCountClass need, Thing th)
                 {
+                    if (!denyDistantSupplyJobs)
+                        return;
                     if (!__result)
                         return;
                     if (!(DenyDistantSupplyJobs.constructible is Thing constructible))
