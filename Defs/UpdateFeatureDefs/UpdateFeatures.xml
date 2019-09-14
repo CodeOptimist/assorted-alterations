@@ -8,6 +8,17 @@
   </HugsLib.UpdateFeatureDef>
 
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>COAssortedAlterations_1_2_0</defName>
+    <assemblyVersion>1.2.0</assemblyVersion>
+    <content>
+      <![CDATA[
+Butchers now include non-vanilla insectoid and humanlike in their counts.
+Butcher small creature recipe is now calculated and will work with content mods.
+    ]]>
+    </content>
+  </HugsLib.UpdateFeatureDef>
+
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_1_0</defName>
     <assemblyVersion>1.1.0</assemblyVersion>
     <content>
@@ -24,7 +35,7 @@ Cannibal and insect meal separation now supports non-vanilla insectoid and human
     <content>
       <![CDATA[
 Deny distant material supply jobs.
-|<i>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Very useful with <b>Pick Up And Haul</b>.)</i>
+|<i>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with <b>Pick Up And Haul</b>.)</i>
 |img:radius|caption:Set default ingredient radius.
 |img:CannibalMeals/Simple/Simple_a,CannibalMeals/Fine/Fine_a,CannibalMeals/Lavish/Lavish_a,CannibalMeals/SurvivalPack/SurvivalPack_a,CannibalMeals/Pemmican/Pemmican_b|caption:<i>Cannibal meals.</i>
 |img:InsectMeals/Simple/Simple_a,InsectMeals/Fine/Fine_a,InsectMeals/Lavish/Lavish_a,InsectMeals/SurvivalPack/SurvivalPack_a,InsectMeals/Pemmican/Pemmican_b|caption:<i>Insect meals.</i>

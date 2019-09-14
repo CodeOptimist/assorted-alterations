@@ -6,7 +6,7 @@
   <defaultSearchIngredientRadiusSetting_description>New bills will be created with this radius.</defaultSearchIngredientRadiusSetting_description>
 
   <denyDistantSupplyJobsSetting_title>Deny distant material supply jobs</denyDistantSupplyJobsSetting_title>
-  <denyDistantSupplyJobsSetting_description>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Very useful with &lt;b&gt;Pick Up And Haul&lt;/b&gt; since only haul jobs utilize inventory.)</denyDistantSupplyJobsSetting_description>
+  <denyDistantSupplyJobsSetting_description>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with &lt;b&gt;Pick Up And Haul&lt;/b&gt; since only haul jobs utilize inventory.)</denyDistantSupplyJobsSetting_description>
 
   <countableMeatRecipesSetting_title>Enable countable meat butcher recipes</countableMeatRecipesSetting_title>
   <countableMeatRecipesSetting_description>These butcher recipes are able to count their respective meat type.</countableMeatRecipesSetting_description>

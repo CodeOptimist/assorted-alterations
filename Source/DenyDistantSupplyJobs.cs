@@ -65,6 +65,8 @@ namespace AssortedAlterations
                     // and with kevlou's "While You're Up" if our pawn is sufficiently close we'll end up grabbing this *anyway*
                     // simply on our WAY to the stockpile we'll now be supplying from (provided we're headed that way, e.g. it has resources)
                     // https://steamcommunity.com/sharedfiles/filedetails/?id=1544626521
+
+                    Debug($"'{pawn}' denied supply job for '{th.Label}' because '{haulDest}' is closer.");
                     __result = false;
                 }
             }

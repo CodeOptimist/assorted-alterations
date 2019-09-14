@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using HugsLib;
 using HugsLib.Settings;
+using HugsLib.Utils;
 using RimWorld;
 using Verse;
 
@@ -18,10 +19,12 @@ namespace AssortedAlterations
         static SettingHandle<bool> separateCannibalMeals;
         static SettingHandle<bool> separateInsectMeals;
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
+        static ModLogger _logger;
         public override string ModIdentifier => "COAssortedAlterations";
 
         public override void DefsLoaded()
         {
+            _logger = Logger;
             var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
             insectMeats = meats.Where(x => x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
             humanMeats = meats.Where(x => x.ingestible.sourceDef.race.Humanlike).ToList();
@@ -71,6 +74,13 @@ namespace AssortedAlterations
             separateCannibalMeals.OnValueChanged(separateCannibalMeals);
             separateInsectMeals.OnValueChanged += SeparateInsectCannibalMeals.OnValueChanged_separateInsectMeals;
             separateInsectMeals.OnValueChanged(separateInsectMeals);
+        }
+
+        static void Debug(params object[] strings)
+        {
+#if DEBUG
+            _logger.Trace(strings);
+#endif
         }
 
         static List<T> DefsFromType<T>(Type type)

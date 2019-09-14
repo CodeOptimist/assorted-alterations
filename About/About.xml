@@ -13,14 +13,14 @@
 
 <color=teal><b>Deny distant material supply jobs.</b></color>
 <i>Dry those tears, builders will no longer traverse the entire map for a single component per heater.</i>
-Won't supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Essential with <color=grey><b><i>Mehni's</i> Pick Up And Haul</b></color>.)
+Won't supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with <color=grey><b><i>Mehni's</i> Pick Up And Haul</b></color>.)
 
 <color=teal><b>Set default ingredient radius.</b></color>
 <i>One less thing to do <b>every, single, time</b>.</i>
 
 <color=teal><b>Butcher small creatures to conserve freezer space.</b></color>
 <i>Leather and meat without worry.</i>
-Convenient recipe of <= 75 meat yielding animals.
+Calculates <= 75 meat yielding creatures.
 
 <color=teal><b>Separate butcher recipes to correctly count meat.</b></color>
 <i>Make just what you need; automate your longpig clothing line!</i>
@@ -47,7 +47,7 @@ A heartfelt thanks for addressing these problems initially:
 
 <size=20>Hello World!</size>
 
-As a programmer who loves this game, I wanted to finally share the improvements and tweaks I've benefited from back to the community, just as so many other modders have improved my experience. I love the small modifications to vanilla that have a huge impact, and am proud to be in the company of others passionate about not necessarily new guns and mechanics and effects, but quality of life.
+As a programmer who loves this game, I wanted to finally share the improvements and tweaks I've benefited from back to the community, just as so many other modders have improved my experience. I love the small modifications to vanilla that have a huge impact, and am proud to be in the company of others passionate about not necessarily new guns and mechanics and effects, but quality of life on the Rim.
 - <color=silver><i>Christopher Galpin (CodeOptimist)</i></color>
 ]]>
   </description>
