@@ -35,6 +35,7 @@
     <Reference Include="%24HugsLibChecker, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Source-DLLs\$HugsLibChecker.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\294100\818773962\Assemblies\0Harmony.dll</HintPath>
@@ -43,6 +44,7 @@
     <Reference Include="0Reloader, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Source-DLLs\0Reloader.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>

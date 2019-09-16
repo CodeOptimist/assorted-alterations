@@ -26,8 +26,8 @@ namespace AssortedAlterations
         {
             _logger = Logger;
             var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
-            insectMeats = meats.Where(x => x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
-            humanMeats = meats.Where(x => x.ingestible.sourceDef.race.Humanlike).ToList();
+            insectMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
+            humanMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.Humanlike).ToList();
             animalMeats = meats.Except(insectMeats).Except(humanMeats).ToList();
 
             defaultSearchIngredientRadius = Settings.GetHandle(
