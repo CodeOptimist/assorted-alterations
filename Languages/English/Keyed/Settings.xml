@@ -2,22 +2,22 @@
 
 <LanguageData>
 
-  <defaultSearchIngredientRadiusSetting_title>Default search ingredient radius</defaultSearchIngredientRadiusSetting_title>
-  <defaultSearchIngredientRadiusSetting_description>New bills will be created with this radius.</defaultSearchIngredientRadiusSetting_description>
+  <COAA_defaultSearchIngredientRadiusSetting_title>Default search ingredient radius</COAA_defaultSearchIngredientRadiusSetting_title>
+  <COAA_defaultSearchIngredientRadiusSetting_description>New bills will be created with this radius.</COAA_defaultSearchIngredientRadiusSetting_description>
 
-  <denyDistantSupplyJobsSetting_title>Deny distant material supply jobs</denyDistantSupplyJobsSetting_title>
-  <denyDistantSupplyJobsSetting_description>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with &lt;b&gt;Pick Up And Haul&lt;/b&gt; since only haul jobs utilize inventory.)</denyDistantSupplyJobsSetting_description>
+  <COAA_denyDistantSupplyJobsSetting_title>Deny distant material supply jobs</COAA_denyDistantSupplyJobsSetting_title>
+  <COAA_denyDistantSupplyJobsSetting_description>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with &lt;b&gt;Pick Up And Haul&lt;/b&gt; since only haul jobs utilize inventory.)</COAA_denyDistantSupplyJobsSetting_description>
 
-  <countableMeatRecipesSetting_title>Enable countable meat butcher recipes</countableMeatRecipesSetting_title>
-  <countableMeatRecipesSetting_description>These butcher recipes are able to count their respective meat type.</countableMeatRecipesSetting_description>
+  <COAA_countableMeatRecipesSetting_title>Enable countable meat butcher recipes</COAA_countableMeatRecipesSetting_title>
+  <COAA_countableMeatRecipesSetting_description>These butcher recipes are able to count their respective meat type.</COAA_countableMeatRecipesSetting_description>
 
-  <convenientButcherRecipesSetting_title>Enable convenient butcher recipes</convenientButcherRecipesSetting_title>
-  <convenientButcherRecipesSetting_description>'Butcher small creature' yields &lt;= 75 meat to conserve freezer space.</convenientButcherRecipesSetting_description>
+  <COAA_convenientButcherRecipesSetting_title>Enable convenient butcher recipes</COAA_convenientButcherRecipesSetting_title>
+  <COAA_convenientButcherRecipesSetting_description>'Butcher small creature' yields &lt;= 75 meat to conserve freezer space.</COAA_convenientButcherRecipesSetting_description>
 
-  <separateCannibalMealsSetting_title>Separate cannibal meals &amp; recipes</separateCannibalMealsSetting_title>
-  <separateCannibalMealsSetting_description>Separate cannibal meals to avoid ingredient mixing (meals vanish if mod is unloaded).</separateCannibalMealsSetting_description>
+  <COAA_separateCannibalMealsSetting_title>Separate cannibal meals &amp; recipes</COAA_separateCannibalMealsSetting_title>
+  <COAA_separateCannibalMealsSetting_description>Separate cannibal meals to avoid ingredient mixing (meals vanish if mod is unloaded).</COAA_separateCannibalMealsSetting_description>
 
-  <separateInsectMealsSetting_title>Separate insect meals &amp; recipes</separateInsectMealsSetting_title>
-  <separateInsectMealsSetting_description>Separate insect meals to avoid ingredient mixing (meals vanish if mod is unloaded).</separateInsectMealsSetting_description>
+  <COAA_separateInsectMealsSetting_title>Separate insect meals &amp; recipes</COAA_separateInsectMealsSetting_title>
+  <COAA_separateInsectMealsSetting_description>Separate insect meals to avoid ingredient mixing (meals vanish if mod is unloaded).</COAA_separateInsectMealsSetting_description>
 
 </LanguageData>

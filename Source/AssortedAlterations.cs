@@ -13,11 +13,7 @@ namespace AssortedAlterations
     partial class AssortedAlterations : ModBase
     {
         static SettingHandle<float> defaultSearchIngredientRadius;
-        static SettingHandle<bool> denyDistantSupplyJobs;
-        static SettingHandle<bool> countableMeatRecipes;
-        static SettingHandle<bool> convenientButcherRecipes;
-        static SettingHandle<bool> separateCannibalMeals;
-        static SettingHandle<bool> separateInsectMeals;
+        static SettingHandle<bool> denyDistantSupplyJobs, countableMeatRecipes, convenientButcherRecipes, separateCannibalMeals, separateInsectMeals, thingCustomFilters;
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
         static ModLogger _logger;
         public override string ModIdentifier => "COAssortedAlterations";
@@ -32,33 +28,33 @@ namespace AssortedAlterations
 
             defaultSearchIngredientRadius = Settings.GetHandle(
                 "defaultSearchIngredientRadius",
-                "defaultSearchIngredientRadiusSetting_title".Translate(),
-                "defaultSearchIngredientRadiusSetting_description".Translate(),
+                "COAA_defaultSearchIngredientRadiusSetting_title".Translate(),
+                "COAA_defaultSearchIngredientRadiusSetting_description".Translate(),
                 999f);
             denyDistantSupplyJobs = Settings.GetHandle(
                 "denyDistantSupplyJobs",
-                "denyDistantSupplyJobsSetting_title".Translate(),
-                "denyDistantSupplyJobsSetting_description".Translate(),
+                "COAA_denyDistantSupplyJobsSetting_title".Translate(),
+                "COAA_denyDistantSupplyJobsSetting_description".Translate(),
                 ModLister.HasActiveModWithName("Pick Up And Haul"));
             countableMeatRecipes = Settings.GetHandle(
                 "countableMeatRecipes",
-                "countableMeatRecipesSetting_title".Translate(),
-                "countableMeatRecipesSetting_description".Translate(),
+                "COAA_countableMeatRecipesSetting_title".Translate(),
+                "COAA_countableMeatRecipesSetting_description".Translate(),
                 true);
             convenientButcherRecipes = Settings.GetHandle(
                 "convenientButcherRecipes",
-                "convenientButcherRecipesSetting_title".Translate(),
-                "convenientButcherRecipesSetting_description".Translate(),
+                "COAA_convenientButcherRecipesSetting_title".Translate(),
+                "COAA_convenientButcherRecipesSetting_description".Translate(),
                 true);
             separateCannibalMeals = Settings.GetHandle(
                 "separateCannibalMeals",
-                "separateCannibalMealsSetting_title".Translate(),
-                "separateCannibalMealsSetting_description".Translate(),
+                "COAA_separateCannibalMealsSetting_title".Translate(),
+                "COAA_separateCannibalMealsSetting_description".Translate(),
                 true);
             separateInsectMeals = Settings.GetHandle(
                 "separateInsectMeals",
-                "separateInsectMealsSetting_title".Translate(),
-                "separateInsectMealsSetting_description".Translate(),
+                "COAA_separateInsectMealsSetting_title".Translate(),
+                "COAA_separateInsectMealsSetting_description".Translate(),
                 true);
 
             ButcherSmallCreature.DefsLoaded();
