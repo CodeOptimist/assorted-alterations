@@ -13,7 +13,7 @@ namespace AssortedAlterations
     partial class AssortedAlterations : ModBase
     {
         static SettingHandle<float> defaultSearchIngredientRadius;
-        static SettingHandle<bool> denyDistantSupplyJobs, countableMeatRecipes, convenientButcherRecipes, separateCannibalMeals, separateInsectMeals, thingCustomFilters;
+        static SettingHandle<bool> denyDistantSupplyJobs, countableMeatRecipes, convenientButcherRecipes, separateCannibalMeals, separateInsectMeals, scrollRestrictPawns;
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
         static ModLogger _logger;
         public override string ModIdentifier => "COAssortedAlterations";
@@ -25,7 +25,7 @@ namespace AssortedAlterations
             insectMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
             humanMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.Humanlike).ToList();
             animalMeats = meats.Except(insectMeats).Except(humanMeats).ToList();
-
+            
             defaultSearchIngredientRadius = Settings.GetHandle(
                 "defaultSearchIngredientRadius",
                 "COAA_defaultSearchIngredientRadiusSetting_title".Translate(),
@@ -55,6 +55,11 @@ namespace AssortedAlterations
                 "separateInsectMeals",
                 "COAA_separateInsectMealsSetting_title".Translate(),
                 "COAA_separateInsectMealsSetting_description".Translate(),
+                true);
+            scrollRestrictPawns = Settings.GetHandle(
+                "scrollRestrictPawns",
+                "COAA_scrollRestrictPawnsSetting_title".Translate(),
+                "COAA_scrollRestrictPawnsSetting_description".Translate(),
                 true);
 
             ButcherSmallCreature.DefsLoaded();

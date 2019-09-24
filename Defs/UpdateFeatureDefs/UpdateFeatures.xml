@@ -7,6 +7,19 @@
     <linkUrl>https://codeoptimism.com/proj/83/</linkUrl>
   </HugsLib.UpdateFeatureDef>
 
+
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>COAssortedAlterations_1_3_0</defName>
+    <assemblyVersion>1.3.0</assemblyVersion>
+    <content>
+      <![CDATA[
+Shift + scroll wheel on area restrictions will cycle them for all listed pawns (colonist or animal).
+Also recommended: <color=grey><b><i>VouLT's</i> Better Pawn Control</b></color> for policies.
+    ]]>
+    </content>
+  </HugsLib.UpdateFeatureDef>
+
+
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_2_0</defName>
     <assemblyVersion>1.2.0</assemblyVersion>
@@ -17,6 +30,7 @@ Butcher small creature recipe is now calculated and will work with content mods.
     ]]>
     </content>
   </HugsLib.UpdateFeatureDef>
+
 
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_1_0</defName>
@@ -29,18 +43,20 @@ Cannibal and insect meal separation now supports non-vanilla insectoid and human
     </content>
   </HugsLib.UpdateFeatureDef>
 
+
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_0_0</defName>
     <assemblyVersion>1.0.0</assemblyVersion>
     <content>
       <![CDATA[
 Deny distant material supply jobs.
-|<i>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with <b>Pick Up And Haul</b>.)</i>
+<i>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with <b>Pick Up And Haul</b>.)</i>
 |img:radius|caption:Set default ingredient radius.
 |img:CannibalMeals/Simple/Simple_a,CannibalMeals/Fine/Fine_a,CannibalMeals/Lavish/Lavish_a,CannibalMeals/SurvivalPack/SurvivalPack_a,CannibalMeals/Pemmican/Pemmican_b|caption:<i>Cannibal meals.</i>
 |img:InsectMeals/Simple/Simple_a,InsectMeals/Fine/Fine_a,InsectMeals/Lavish/Lavish_a,InsectMeals/SurvivalPack/SurvivalPack_a,InsectMeals/Pemmican/Pemmican_b|caption:<i>Insect meals.</i>
-|img:butcher|caption:Separate butcher recipes will correctly count meat.\n\n\nButcher small creatures to conserve freezer space.
-|img:cook|caption:Separate cannibal and insect meals will avoid ingredient mixing.
+|Separate butcher recipes will correctly count meat.
+Butcher small creatures to conserve freezer space.
+Separate cannibal and insect meals will avoid ingredient mixing.
     ]]>
     </content>
   </HugsLib.UpdateFeatureDef>
