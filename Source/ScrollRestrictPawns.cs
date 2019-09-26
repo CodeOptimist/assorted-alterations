@@ -17,9 +17,7 @@ namespace AssortedAlterations
         {
             // TD Enhancement Pack
             static readonly List<Assembly> tdAssemblies = LoadedModManager.RunningMods.SingleOrDefault(x => x.Identifier == "1339135272")?.assemblies.loadedAssemblies;
-            static readonly Type Td_Settings = tdAssemblies?.Select(x => x.GetType("TD_Enhancement_Pack.Settings")).SingleOrDefault(x => x != null);
-            static readonly ModSettings tdSettings = AccessTools.Method(Td_Settings, "Get")?.Invoke(null, new object[] { }) as ModSettings;
-            static readonly Type Td_MapComponent_AreaOrder = tdAssemblies?.Select(x => x.GetType("TD_Enhancement_Pack.MapComponent_AreaOrder")).SingleOrDefault(x => x != null);
+            static readonly Type Td_DoAllowedAreaSelectors_Patch = tdAssemblies?.Select(x => x.GetType("TD_Enhancement_Pack.DoAllowedAreaSelectors_AreaOrder")).SingleOrDefault(x => x != null);
 
             [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea), "GetHeaderTip")]
             static class PawnColumnWorker_AllowedArea_GetHeaderTip_Patch
@@ -45,25 +43,15 @@ namespace AssortedAlterations
                     if (!Event.current.shift || Event.current.type != EventType.ScrollWheel || !Mouse.IsOver(rect))
                         return;
 
-                    var areasEnumerable = Find.CurrentMap.areaManager.AllAreas.Where(x => x.AssignableAsAllowed());
-
-                    // TD Enhancement Pack
-                    if (tdSettings != null && Td_MapComponent_AreaOrder != null) {
-                        var tdMapComponentAreaOrder =
-                            (MapComponent) AccessTools.Method(typeof(Map), nameof(Map.GetComponent)).MakeGenericMethod(Td_MapComponent_AreaOrder).Invoke(Find.CurrentMap, new object[] { });
-                        var tdAreaForTypes = (bool?) AccessTools.Field(Td_Settings, "areaForTypes")?.GetValue(tdSettings);
-                        if (tdAreaForTypes == true) {
-                            if (Find.UIRoot.windows.WindowOfType<MainTabWindow_Restrict>() != null) {
-                                if (AccessTools.Field(Td_MapComponent_AreaOrder, "notForColonists") is FieldInfo notForColonistsField)
-                                    areasEnumerable = areasEnumerable.Where(x => !((HashSet<Area>) notForColonistsField.GetValue(tdMapComponentAreaOrder)).Contains(x));
-                            } else if (Find.UIRoot.windows.WindowOfType<MainTabWindow_Animals>() != null) {
-                                if (AccessTools.Field(Td_MapComponent_AreaOrder, "notForAnimals") is FieldInfo notForAnimalsField)
-                                    areasEnumerable = areasEnumerable.Where(x => !((HashSet<Area>) notForAnimalsField.GetValue(tdMapComponentAreaOrder)).Contains(x));
-                            }
-                        }
+                    bool AssignableAsAllowed(Area area)
+                    {
+                        // TD Enhancement Pack
+                        if (AccessTools.Method(Td_DoAllowedAreaSelectors_Patch, "AssignableAsAllowedForPawn") is MethodInfo methodInfo)
+                            return (bool) methodInfo.Invoke(null, new object[] {area, pawn});
+                        return area.AssignableAsAllowed();
                     }
 
-                    var areas = areasEnumerable.ToList();
+                    var areas = Find.CurrentMap.areaManager.AllAreas.Where(AssignableAsAllowed).ToList();
                     areas.Insert(0, null); // include Unrestricted
                     var pawnAreaIdx = 0;
                     for (var i = 0; i < areas.Count; i++)
