@@ -13,7 +13,7 @@ namespace AssortedAlterations
     partial class AssortedAlterations : ModBase
     {
         static SettingHandle<float> defaultSearchIngredientRadius;
-        static SettingHandle<bool> denyDistantSupplyJobs, countableMeatRecipes, convenientButcherRecipes, separateCannibalMeals, separateInsectMeals, scrollRestrictPawns;
+        static SettingHandle<bool> denyDistantSupplyJobs, countableMeatRecipes, convenientButcherRecipes, separateCannibalMeals, separateInsectMeals, scrollRestrictPawns, betterPawnControl_Birth;
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
         static ModLogger _logger;
         public override string ModIdentifier => "COAssortedAlterations";
@@ -61,6 +61,11 @@ namespace AssortedAlterations
                 "COAA_scrollRestrictPawnsSetting_title".Translate(),
                 "COAA_scrollRestrictPawnsSetting_description".Translate(),
                 true);
+            betterPawnControl_Birth = Settings.GetHandle(
+                "betterPawnControl_Birth",
+                "COAA_betterPawnControl_BirthSetting_title".Translate(),
+                "COAA_betterPawnControl_BirthSetting_description".Translate(),
+                true);
 
             ButcherSmallCreature.DefsLoaded();
 
@@ -75,6 +80,9 @@ namespace AssortedAlterations
             separateCannibalMeals.OnValueChanged(separateCannibalMeals);
             separateInsectMeals.OnValueChanged += SeparateInsectCannibalMeals.OnValueChanged_separateInsectMeals;
             separateInsectMeals.OnValueChanged(separateInsectMeals);
+
+            if (ModLister.HasActiveModWithName("Better Pawn Control"))
+                BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
         }
 
         static void Debug(params object[] strings)

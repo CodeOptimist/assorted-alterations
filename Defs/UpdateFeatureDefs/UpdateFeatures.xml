@@ -9,6 +9,17 @@
 
 
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>COAssortedAlterations_1_4_0</defName>
+    <assemblyVersion>1.4.0</assemblyVersion>
+    <content>
+      <![CDATA[
+Patched Better Pawn Control for hatched/birthed animals to inherit the entire policy of their parent.
+    ]]>
+    </content>
+  </HugsLib.UpdateFeatureDef>
+
+
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_3_0</defName>
     <assemblyVersion>1.3.0</assemblyVersion>
     <content>

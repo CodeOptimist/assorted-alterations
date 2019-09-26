@@ -23,4 +23,7 @@
   <COAA_scrollRestrictPawnsSetting_title>Shift + scroll cycle area restrictions</COAA_scrollRestrictPawnsSetting_title>
   <COAA_scrollRestrictPawnsSetting_description>Shift + scroll wheel on area restrictions will cycle them for all listed pawns (colonist or animal).</COAA_scrollRestrictPawnsSetting_description>
 
+  <COAA_betterPawnControl_BirthSetting_title>Patch &lt;b&gt;Better Pawn Control&lt;/b&gt; for animal birth</COAA_betterPawnControl_BirthSetting_title>
+  <COAA_betterPawnControl_BirthSetting_description>Hatched and birthed animals will inherit the entire restriction policy of their parent.</COAA_betterPawnControl_BirthSetting_description>
+
 </LanguageData>
