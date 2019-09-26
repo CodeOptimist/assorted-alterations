@@ -81,8 +81,7 @@ namespace AssortedAlterations
             separateInsectMeals.OnValueChanged += SeparateInsectCannibalMeals.OnValueChanged_separateInsectMeals;
             separateInsectMeals.OnValueChanged(separateInsectMeals);
 
-            if (ModLister.HasActiveModWithName("Better Pawn Control"))
-                BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
+            BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
         }
 
         static void Debug(params object[] strings)
