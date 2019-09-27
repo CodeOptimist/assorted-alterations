@@ -20,16 +20,16 @@ namespace AssortedAlterations
             static readonly FieldInfo bpcAnimalLinksField = AccessTools.Field(Bpc_AnimalManager, "links");
             static readonly CodeInstructionComparer comparer = new CodeInstructionComparer();
 
-            public static void DefsLoaded(HarmonyInstance HarmonyInst)
+            public static void DefsLoaded(HarmonyInstance harmonyInst)
             {
                 if (Bpc_AnimalManager == null || Bpc_AnimalLink == null) // || !Bpc_AnimalManager.Assembly.ImageRuntimeVersion.StartsWith("v2.0"))
                     return;
 
-                HarmonyInst.Patch(
+                harmonyInst.Patch(
                     AccessTools.Method(typeof(Hediff_Pregnant), nameof(Hediff_Pregnant.DoBirthSpawn)),
                     transpiler: new HarmonyMethod(typeof(BetterPawnControl_Birth), nameof(Birth)));
 
-                HarmonyInst.Patch(
+                harmonyInst.Patch(
                     AccessTools.Method(typeof(CompHatcher), nameof(CompHatcher.Hatch)),
                     transpiler: new HarmonyMethod(typeof(BetterPawnControl_Birth), nameof(Hatch)));
             }
@@ -66,8 +66,6 @@ namespace AssortedAlterations
                     new CodeInstruction(OpCodes.Callvirt, AccessTools.Property(typeof(Pawn_PlayerSettings), "AreaRestriction")?.GetGetMethod()),
                     new CodeInstruction(OpCodes.Callvirt, AccessTools.Property(typeof(Pawn_PlayerSettings), "AreaRestriction")?.GetSetMethod()),
                 };
-
-                //AccessTools.Property(typeof(Pawn_PlayerSettings), "AreaRestriction").GetGetMethod();
 
                 var codes = instructions.ToList();
                 for (var i = 0; i < codes.Count - sequence.Count; i++)
