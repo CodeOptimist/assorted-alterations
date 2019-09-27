@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Harmony;
 using Reloader;
 using RimWorld;
@@ -66,7 +67,7 @@ namespace AssortedAlterations
                     // simply on our WAY to the stockpile we'll now be supplying from (provided we're headed that way, e.g. it has resources)
                     // https://steamcommunity.com/sharedfiles/filedetails/?id=1544626521
 
-                    Debug($"'{pawn}' denied supply job for '{th.Label}' because '{haulDest}' is closer.");
+                    Debug.WriteLine($"'{pawn}' denied supply job for '{th.Label}' because '{haulDest}' is closer.");
                     __result = false;
                 }
             }

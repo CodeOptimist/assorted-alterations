@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using HugsLib;
 using HugsLib.Settings;
-using HugsLib.Utils;
 using RimWorld;
 using Verse;
 
@@ -15,12 +14,10 @@ namespace AssortedAlterations
         static SettingHandle<float> defaultSearchIngredientRadius;
         static SettingHandle<bool> denyDistantSupplyJobs, countableMeatRecipes, convenientButcherRecipes, separateCannibalMeals, separateInsectMeals, scrollRestrictPawns, betterPawnControl_Birth;
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
-        static ModLogger _logger;
         public override string ModIdentifier => "COAssortedAlterations";
 
         public override void DefsLoaded()
         {
-            _logger = Logger;
             var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
             insectMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
             humanMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.Humanlike).ToList();
@@ -82,13 +79,6 @@ namespace AssortedAlterations
             separateInsectMeals.OnValueChanged(separateInsectMeals);
 
             BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
-        }
-
-        static void Debug(params object[] strings)
-        {
-#if DEBUG
-            _logger.Trace(strings);
-#endif
         }
 
         static List<T> DefsFromType<T>(Type type)
