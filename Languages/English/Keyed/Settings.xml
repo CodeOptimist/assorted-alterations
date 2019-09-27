@@ -26,4 +26,7 @@
   <COAA_betterPawnControl_BirthSetting_title>Patch &lt;b&gt;Better Pawn Control&lt;/b&gt; for animal birth</COAA_betterPawnControl_BirthSetting_title>
   <COAA_betterPawnControl_BirthSetting_description>Hatched and birthed animals will inherit the entire restriction policy of their parent.</COAA_betterPawnControl_BirthSetting_description>
 
+  <COAA_pauseOnBeginAssaultSetting_title>Pause game on "beginning their assault"</COAA_pauseOnBeginAssaultSetting_title>
+  <COAA_pauseOnBeginAssaultSetting_description></COAA_pauseOnBeginAssaultSetting_description>
+
 </LanguageData>

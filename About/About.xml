@@ -18,6 +18,8 @@ Won't supply directly from a resource if hauling it to storage would bring it cl
 <color=teal><b>Set default ingredient radius.</b></color>
 <i>One less thing to do <b>every, single, time</b>.</i>
 
+<color=teal><b>Pause on "beginning their assault".</b></color>
+
 <color=teal><b>Shift+scroll cycle area restrictions.</b></color>
 Shift + scroll wheel on area restrictions will cycle them for all listed pawns (colonist or animal).
 Also recommended: <color=grey><b><i>VouLT's</i> Better Pawn Control</b></color> for policies.

@@ -9,6 +9,17 @@
 
 
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>COAssortedAlterations_1_5_0</defName>
+    <assemblyVersion>1.5.0</assemblyVersion>
+    <content>
+      <![CDATA[
+Added feature: Pause game on "beginning their assault".
+    ]]>
+    </content>
+  </HugsLib.UpdateFeatureDef>
+
+
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_4_0</defName>
     <assemblyVersion>1.4.0</assemblyVersion>
     <content>

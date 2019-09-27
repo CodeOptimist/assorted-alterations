@@ -73,6 +73,7 @@
     <Compile Include="Defs.cs" />
     <Compile Include="IngredientSearchRadiusDefault.cs" />
     <Compile Include="DenyDistantSupplyJobs.cs" />
+    <Compile Include="PauseOnBeginAssault.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +83,15 @@
     <Compile Include="SeparateInsectCannibalMeals.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\About\About.xml">
+      <Link>About.xml</Link>
+    </Content>
+    <Content Include="..\Defs\UpdateFeatureDefs\UpdateFeatures.xml">
+      <Link>UpdateFeatures.xml</Link>
+    </Content>
+    <Content Include="..\Languages\English\Keyed\Settings.xml">
+      <Link>Settings.xml</Link>
+    </Content>
     <Content Include="Properties\AssemblyInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
