@@ -33,8 +33,7 @@ namespace AssortedAlterations
                 {
                     var bill = (Bill_Production) BillGetter.GetValue(__instance);
                     var rect = new Rect(inRect.xMin + 700f, inRect.yMin + 506f, 65f, 24f);
-                    if (Widgets.ButtonText(rect, "Default"))
-                    {
+                    if (Widgets.ButtonText(rect, "Default")) {
                         SoundDefOf.Click.PlayOneShotOnCamera();
                         defaultSearchIngredientRadius.Value = bill.ingredientSearchRadius;
                     }

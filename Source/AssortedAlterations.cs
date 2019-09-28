@@ -28,8 +28,8 @@ namespace AssortedAlterations
         public override void DefsLoaded()
         {
             var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
-            insectMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.FleshType == FleshTypeDefOf.Insectoid).ToList();
-            humanMeats = meats.Where(x => x.ingestible?.sourceDef?.race != null && x.ingestible.sourceDef.race.Humanlike).ToList();
+            insectMeats = meats.Where(x => x.ingestible?.sourceDef?.race?.FleshType == FleshTypeDefOf.Insectoid).ToList();
+            humanMeats = meats.Where(x => x.ingestible?.sourceDef?.race?.Humanlike == true).ToList();
             animalMeats = meats.Except(insectMeats).Except(humanMeats).ToList();
 
             SettingHandle<T> GetSettingHandle<T>(string settingName, T defaultValue)

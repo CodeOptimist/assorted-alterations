@@ -18,8 +18,7 @@ namespace AssortedAlterations
                 stoves = new List<ThingDef> {RecipeUsers.ElectricStove, RecipeUsers.FueledStove};
                 campfire = new List<ThingDef> {ThingDefOf.Campfire};
 
-                foreach (var meat in ThingCategoryDefOf.MeatRaw.childThingDefs)
-                {
+                foreach (var meat in ThingCategoryDefOf.MeatRaw.childThingDefs) {
                     foreach (var recipe in DefsFromType<RecipeDef>(typeof(InsectRecipes)))
                         recipe.fixedIngredientFilter.SetAllow(meat, insectMeats.Contains(meat));
                     foreach (var recipe in DefsFromType<RecipeDef>(typeof(CannibalRecipes)))
@@ -53,8 +52,7 @@ namespace AssortedAlterations
                 [HarmonyPostfix]
                 static void ExcludeFromStartingRestrictions(FoodRestrictionDatabase __instance)
                 {
-                    foreach (var restriction in __instance.AllFoodRestrictions)
-                    {
+                    foreach (var restriction in __instance.AllFoodRestrictions) {
                         foreach (var food in cannibalFoods)
                             restriction.filter.SetAllow(food, false);
                         foreach (var food in insectFoods)

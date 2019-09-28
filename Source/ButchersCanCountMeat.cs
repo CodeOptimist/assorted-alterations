@@ -21,7 +21,7 @@ namespace AssortedAlterations
                     {CountableMeatRecipes.COAA_ButcherInsectFlesh, CountableMeatRecipes.COAA_ButcherAnimalInsectFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh};
                 humanRecipes = new List<RecipeDef>
                     {CountableMeatRecipes.COAA_ButcherHumanFlesh, CountableMeatRecipes.COAA_ButcherAnimalHumanFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh};
-                butchers = new List<ThingDef> { RecipeUsers.TableButcher, RecipeUsers.ButcherSpot };
+                butchers = new List<ThingDef> {RecipeUsers.TableButcher, RecipeUsers.ButcherSpot};
             }
 
             public static void OnValueChanged_countableMeatRecipes(bool newvalue)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
 using Harmony;
 using RimWorld;
 using Verse;
@@ -20,7 +19,6 @@ namespace AssortedAlterations
             [HarmonyPatch(typeof(LordJob_StageThenAttack), nameof(LordJob_StageThenAttack.CreateGraph))]
             static class LordJob_StageThenAttack_CreateGraph_Patch
             {
-
                 [HarmonyTranspiler]
                 static IEnumerable<CodeInstruction> PauseOnBeginAssault(IEnumerable<CodeInstruction> instructions)
                 {
