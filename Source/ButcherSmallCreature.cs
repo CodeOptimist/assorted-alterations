@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Reloader;
 using RimWorld;
 
 namespace AssortedAlterations
@@ -8,9 +7,6 @@ namespace AssortedAlterations
     {
         static class ButcherSmallCreature
         {
-#if DEBUG
-            [ReloadMethod]
-#endif
             public static void DefsLoaded()
             {
                 var smallCorpses = ThingCategoryDefOf.Corpses.ThisAndChildCategoryDefs.SelectMany(x => x.childThingDefs).Where(

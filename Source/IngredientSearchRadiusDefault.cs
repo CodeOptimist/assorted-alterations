@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Harmony;
-using Reloader;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -29,9 +28,6 @@ namespace AssortedAlterations
             {
                 static readonly FieldInfo BillGetter = typeof(Dialog_BillConfig).GetField("bill", BindingFlags.Instance | BindingFlags.NonPublic);
 
-#if DEBUG
-                [ReloadMethod]
-#endif
                 [HarmonyPostfix]
                 static void DrawRadiusDefaultButton(Dialog_BillConfig __instance, Rect inRect)
                 {

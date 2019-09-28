@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Harmony;
-using Reloader;
 using RimWorld;
 using Verse;
 
@@ -28,9 +27,6 @@ namespace AssortedAlterations
                 }
             }
 
-#if DEBUG
-            [ReloadMethod]
-#endif
             public static void OnValueChanged_separateInsectMeals(bool newvalue)
             {
                 UpdateRecipes(newvalue, stoves, typeof(InsectRecipes));
@@ -41,9 +37,6 @@ namespace AssortedAlterations
                     recipe.fixedIngredientFilter.SetAllow(insectMeat, !newvalue);
             }
 
-#if DEBUG
-            [ReloadMethod]
-#endif
             public static void OnValueChanged_separateCannibalMeals(bool newvalue)
             {
                 UpdateRecipes(newvalue, stoves, typeof(CannibalRecipes));
@@ -57,9 +50,6 @@ namespace AssortedAlterations
             [HarmonyPatch(typeof(FoodRestrictionDatabase), "GenerateStartingFoodRestrictions")]
             static class FoodRestrictionDatabase_GenerateStartingFoodRestrictions_Patch
             {
-#if DEBUG
-                [ReloadMethod]
-#endif
                 [HarmonyPostfix]
                 static void ExcludeFromStartingRestrictions(FoodRestrictionDatabase __instance)
                 {

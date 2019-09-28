@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Harmony;
-using Reloader;
 using RimWorld;
 using Verse;
 
@@ -38,9 +37,6 @@ namespace AssortedAlterations
             [HarmonyPatch(typeof(RecipeWorkerCounter), "CanCountProducts")]
             class RecipeWorkerCounter_CanCountProducts_Patch
             {
-#if DEBUG
-                [ReloadMethod]
-#endif
                 [HarmonyPostfix]
                 static void AllowCountMeat(ref bool __result, Bill_Production bill)
                 {
@@ -52,9 +48,6 @@ namespace AssortedAlterations
             [HarmonyPatch(typeof(RecipeWorkerCounter), "CountProducts")]
             class RecipeWorkerCounter_CountProducts_Patch
             {
-#if DEBUG
-                [ReloadMethod]
-#endif
                 [HarmonyPrefix]
                 static bool CountMeat(ref int __result, Bill_Production bill)
                 {

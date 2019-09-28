@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Harmony;
-using Reloader;
 using RimWorld;
 using Verse;
 
@@ -16,9 +15,6 @@ namespace AssortedAlterations
             [HarmonyPatch(typeof(WorkGiver_ConstructDeliverResources), "ResourceDeliverJobFor")]
             static class WorkGiver_ConstructDeliverResources_ResourceDeliverJobFor_Patch
             {
-#if DEBUG
-                [ReloadMethod]
-#endif
                 [HarmonyPrefix]
                 [SuppressMessage("ReSharper", "UnusedParameter.Local")]
                 static bool GetConstructible(Pawn pawn, IConstructible c)
@@ -31,9 +27,6 @@ namespace AssortedAlterations
             [HarmonyPatch(typeof(WorkGiver_ConstructDeliverResources), "ResourceValidator")]
             static class WorkGiver_ConstructDeliverResources_ResourceValidator_Patch
             {
-#if DEBUG
-                [ReloadMethod]
-#endif
                 [HarmonyPostfix]
                 [SuppressMessage("ReSharper", "UnusedParameter.Local")]
                 static void DenySupplyingDistantResources(ref bool __result, Pawn pawn, ThingDefCountClass need, Thing th)
