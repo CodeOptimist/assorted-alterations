@@ -20,16 +20,14 @@ namespace AssortedAlterations
             static class LordJob_StageThenAttack_CreateGraph_Patch
             {
                 [HarmonyTranspiler]
-                static IEnumerable<CodeInstruction> PauseOnBeginAssault(IEnumerable<CodeInstruction> instructions)
-                {
+                static IEnumerable<CodeInstruction> PauseOnBeginAssault(IEnumerable<CodeInstruction> instructions) {
                     var codes = instructions.ToList();
                     for (var i = 0; i < codes.Count; i++) {
                         if (codes[i].operand is string str && str == "MessageRaidersBeginningAssault")
                             msgIdx = i;
                         if (msgIdx == -1) continue;
                         if (codes[i].operand is MethodInfo methodInfo && methodInfo == AccessTools.Method(typeof(Transition), nameof(Transition.AddPreAction))) {
-                            void Pause()
-                            {
+                            void Pause() {
                                 if (pauseOnBeginAssault)
                                     Find.TickManager.Pause();
                             }

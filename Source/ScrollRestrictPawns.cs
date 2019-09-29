@@ -24,8 +24,7 @@ namespace AssortedAlterations
             {
                 [HarmonyPostfix]
                 [SuppressMessage("ReSharper", "UnusedParameter.Local")]
-                static void GetHeaderTip(ref string __result, PawnTable table)
-                {
+                static void GetHeaderTip(ref string __result, PawnTable table) {
                     if (!scrollRestrictPawns)
                         return;
                     __result += "\n" + "COAA_AllowedAreaShiftScrollTip".Translate();
@@ -36,15 +35,13 @@ namespace AssortedAlterations
             static class PawnColumnWorker_AllowedArea_DoCell_Patch
             {
                 [HarmonyPostfix]
-                static void ShiftScrollAssign(Rect rect, Pawn pawn, PawnTable table)
-                {
+                static void ShiftScrollAssign(Rect rect, Pawn pawn, PawnTable table) {
                     if (!scrollRestrictPawns)
                         return;
                     if (!Event.current.shift || Event.current.type != EventType.ScrollWheel || !Mouse.IsOver(rect))
                         return;
 
-                    bool AssignableAsAllowed(Area area)
-                    {
+                    bool AssignableAsAllowed(Area area) {
                         // TD Enhancement Pack
                         if (AccessTools.Method(Td_DoAllowedAreaSelectors_Patch, "AssignableAsAllowedForPawn") is MethodInfo methodInfo)
                             return (bool) methodInfo.Invoke(null, new object[] {area, pawn});

@@ -38,8 +38,7 @@ namespace AssortedAlterations
             class RecipeWorkerCounter_CanCountProducts_Patch
             {
                 [HarmonyPostfix]
-                static void AllowCountMeat(ref bool __result, Bill_Production bill)
-                {
+                static void AllowCountMeat(ref bool __result, Bill_Production bill) {
                     if (countableRecipes.Contains(bill.recipe))
                         __result = true;
                 }
@@ -49,8 +48,7 @@ namespace AssortedAlterations
             class RecipeWorkerCounter_CountProducts_Patch
             {
                 [HarmonyPrefix]
-                static bool CountMeat(ref int __result, Bill_Production bill)
-                {
+                static bool CountMeat(ref int __result, Bill_Production bill) {
                     if (!countableRecipes.Contains(bill.recipe))
                         return true;
 

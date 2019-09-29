@@ -17,8 +17,7 @@ namespace AssortedAlterations
             {
                 [HarmonyPostfix]
                 [SuppressMessage("ReSharper", "UnusedParameter.Local")]
-                static void UseCustomIngredientRadius(Bill_Production __instance, RecipeDef recipe)
-                {
+                static void UseCustomIngredientRadius(Bill_Production __instance, RecipeDef recipe) {
                     __instance.ingredientSearchRadius = defaultSearchIngredientRadius;
                 }
             }

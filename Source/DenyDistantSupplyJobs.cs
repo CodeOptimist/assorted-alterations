@@ -17,8 +17,7 @@ namespace AssortedAlterations
             {
                 [HarmonyPrefix]
                 [SuppressMessage("ReSharper", "UnusedParameter.Local")]
-                static bool GetConstructible(Pawn pawn, IConstructible c)
-                {
+                static bool GetConstructible(Pawn pawn, IConstructible c) {
                     constructible = c;
                     return true;
                 }

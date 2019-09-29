@@ -20,8 +20,7 @@ namespace AssortedAlterations
             static readonly FieldInfo bpcAnimalLinksField = AccessTools.Field(Bpc_AnimalManager, "links");
             static readonly CodeInstructionComparer comparer = new CodeInstructionComparer();
 
-            public static void DefsLoaded(HarmonyInstance harmonyInst)
-            {
+            public static void DefsLoaded(HarmonyInstance harmonyInst) {
                 if (Bpc_AnimalManager == null || Bpc_AnimalLink == null) // || !Bpc_AnimalManager.Assembly.ImageRuntimeVersion.StartsWith("v2.0"))
                     return;
 
@@ -34,8 +33,7 @@ namespace AssortedAlterations
                     transpiler: new HarmonyMethod(typeof(BetterPawnControl_Birth), nameof(Hatch)));
             }
 
-            static void Born(Pawn pawn, Pawn parent)
-            {
+            static void Born(Pawn pawn, Pawn parent) {
                 if (!betterPawnControl_Birth) return;
                 if (!(bpcAnimalLinksField.GetValue(null) is IList animalLinks)) return;
 
@@ -111,8 +109,7 @@ namespace AssortedAlterations
 
             class CodeInstructionComparer : IEqualityComparer<CodeInstruction>
             {
-                public bool Equals(CodeInstruction x, CodeInstruction y)
-                {
+                public bool Equals(CodeInstruction x, CodeInstruction y) {
                     if (ReferenceEquals(null, x)) return false;
                     if (ReferenceEquals(null, y)) return false;
                     if (ReferenceEquals(x, y)) return true;
@@ -125,8 +122,7 @@ namespace AssortedAlterations
                     return false;
                 }
 
-                public int GetHashCode(CodeInstruction obj)
-                {
+                public int GetHashCode(CodeInstruction obj) {
                     return obj.GetHashCode();
                 }
             }

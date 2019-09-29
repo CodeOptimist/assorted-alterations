@@ -11,8 +11,7 @@ namespace AssortedAlterations
         {
             public static SpecialThingFilterDef AllowRotten;
 
-            static SpecialFilter()
-            {
+            static SpecialFilter() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(SpecialFilter));
             }
         }
@@ -20,13 +19,9 @@ namespace AssortedAlterations
         [DefOf]
         static class RecipeUsers
         {
-            public static ThingDef TableButcher;
-            public static ThingDef ButcherSpot;
-            public static ThingDef ElectricStove;
-            public static ThingDef FueledStove;
+            public static ThingDef TableButcher, ButcherSpot, ElectricStove, FueledStove;
 
-            static RecipeUsers()
-            {
+            static RecipeUsers() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(RecipeUsers));
             }
         }
@@ -34,14 +29,9 @@ namespace AssortedAlterations
         [DefOf]
         static class FoodRecipes
         {
-            public static RecipeDef CookMealSimple;
-            public static RecipeDef CookMealFine;
-            public static RecipeDef CookMealLavish;
-            public static RecipeDef CookMealSurvival;
-            public static RecipeDef Make_Pemmican;
+            public static RecipeDef CookMealSimple, CookMealFine, CookMealLavish, CookMealSurvival, Make_Pemmican;
 
-            static FoodRecipes()
-            {
+            static FoodRecipes() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(FoodRecipes));
             }
         }
@@ -51,8 +41,7 @@ namespace AssortedAlterations
         {
             public static RecipeDef COAA_ButcherSmallCreatureFlesh;
 
-            static ConvenientButcherRecipes()
-            {
+            static ConvenientButcherRecipes() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(ConvenientButcherRecipes));
             }
         }
@@ -60,15 +49,9 @@ namespace AssortedAlterations
         [DefOf]
         static class CountableMeatRecipes
         {
-            public static RecipeDef COAA_ButcherAnimalFlesh;
-            public static RecipeDef COAA_ButcherInsectFlesh;
-            public static RecipeDef COAA_ButcherHumanFlesh;
-            public static RecipeDef COAA_ButcherAnimalInsectFlesh;
-            public static RecipeDef COAA_ButcherAnimalHumanFlesh;
-            public static RecipeDef COAA_ButcherInsectHumanFlesh;
+            public static RecipeDef COAA_ButcherAnimalFlesh, COAA_ButcherInsectFlesh, COAA_ButcherHumanFlesh, COAA_ButcherAnimalInsectFlesh, COAA_ButcherAnimalHumanFlesh, COAA_ButcherInsectHumanFlesh;
 
-            static CountableMeatRecipes()
-            {
+            static CountableMeatRecipes() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(CountableMeatRecipes));
             }
         }
@@ -76,14 +59,9 @@ namespace AssortedAlterations
         [DefOf]
         static class CannibalRecipes
         {
-            public static RecipeDef COAA_CookCannibalMealSimple;
-            public static RecipeDef COAA_CookCannibalMealFine;
-            public static RecipeDef COAA_CookCannibalMealLavish;
-            public static RecipeDef COAA_CookCannibalMealSurvival;
-            public static RecipeDef COAA_MakeCannibalPemmican;
+            public static RecipeDef COAA_CookCannibalMealSimple, COAA_CookCannibalMealFine, COAA_CookCannibalMealLavish, COAA_CookCannibalMealSurvival, COAA_MakeCannibalPemmican;
 
-            static CannibalRecipes()
-            {
+            static CannibalRecipes() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(CannibalRecipes));
             }
         }
@@ -91,14 +69,9 @@ namespace AssortedAlterations
         [DefOf]
         static class InsectRecipes
         {
-            public static RecipeDef COAA_CookInsectMealSimple;
-            public static RecipeDef COAA_CookInsectMealFine;
-            public static RecipeDef COAA_CookInsectMealLavish;
-            public static RecipeDef COAA_CookInsectMealSurvival;
-            public static RecipeDef COAA_MakeInsectPemmican;
+            public static RecipeDef COAA_CookInsectMealSimple, COAA_CookInsectMealFine, COAA_CookInsectMealLavish, COAA_CookInsectMealSurvival, COAA_MakeInsectPemmican;
 
-            static InsectRecipes()
-            {
+            static InsectRecipes() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(InsectRecipes));
             }
         }
@@ -106,14 +79,9 @@ namespace AssortedAlterations
         [DefOf]
         static class CannibalFoods
         {
-            public static ThingDef COAA_CannibalMealSurvivalPack;
-            public static ThingDef COAA_CannibalMealSimple;
-            public static ThingDef COAA_CannibalMealFine;
-            public static ThingDef COAA_CannibalMealLavish;
-            public static ThingDef COAA_CannibalPemmican;
+            public static ThingDef COAA_CannibalMealSurvivalPack, COAA_CannibalMealSimple, COAA_CannibalMealFine, COAA_CannibalMealLavish, COAA_CannibalPemmican;
 
-            static CannibalFoods()
-            {
+            static CannibalFoods() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(CannibalFoods));
             }
         }
@@ -121,14 +89,9 @@ namespace AssortedAlterations
         [DefOf]
         static class InsectFoods
         {
-            public static ThingDef COAA_InsectMealSurvivalPack;
-            public static ThingDef COAA_InsectMealSimple;
-            public static ThingDef COAA_InsectMealFine;
-            public static ThingDef COAA_InsectMealLavish;
-            public static ThingDef COAA_InsectPemmican;
+            public static ThingDef COAA_InsectMealSurvivalPack, COAA_InsectMealSimple, COAA_InsectMealFine, COAA_InsectMealLavish, COAA_InsectPemmican;
 
-            static InsectFoods()
-            {
+            static InsectFoods() {
                 DefOfHelper.EnsureInitializedInCtor(typeof(InsectFoods));
             }
         }

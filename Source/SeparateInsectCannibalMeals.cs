@@ -50,8 +50,7 @@ namespace AssortedAlterations
             static class FoodRestrictionDatabase_GenerateStartingFoodRestrictions_Patch
             {
                 [HarmonyPostfix]
-                static void ExcludeFromStartingRestrictions(FoodRestrictionDatabase __instance)
-                {
+                static void ExcludeFromStartingRestrictions(FoodRestrictionDatabase __instance) {
                     foreach (var restriction in __instance.AllFoodRestrictions) {
                         foreach (var food in cannibalFoods)
                             restriction.filter.SetAllow(food, false);
@@ -65,8 +64,7 @@ namespace AssortedAlterations
             static class ThingSetMakerUtility_CanGenerate_Patch
             {
                 [HarmonyPostfix]
-                static void DenyGeneration(ref bool __result, ThingDef thingDef)
-                {
+                static void DenyGeneration(ref bool __result, ThingDef thingDef) {
                     if (cannibalFoods.Contains(thingDef) || insectFoods.Contains(thingDef))
                         __result = false;
                 }

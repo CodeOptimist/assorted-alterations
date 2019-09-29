@@ -7,8 +7,7 @@ namespace AssortedAlterations
     {
         static class ButcherSmallCreature
         {
-            public static void DefsLoaded()
-            {
+            public static void DefsLoaded() {
                 var smallCorpses = ThingCategoryDefOf.Corpses.ThisAndChildCategoryDefs.SelectMany(x => x.childThingDefs).Where(
                     x => x.ingestible?.sourceDef?.race?.meatDef != null && 
                          x.ingestible.sourceDef.GetStatValueAbstract(StatDefOf.MeatAmount) > 0 &&

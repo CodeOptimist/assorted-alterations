@@ -25,15 +25,13 @@ namespace AssortedAlterations
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
         public override string ModIdentifier => "COAssortedAlterations";
 
-        public override void DefsLoaded()
-        {
+        public override void DefsLoaded() {
             var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
             insectMeats = meats.Where(x => x.ingestible?.sourceDef?.race?.FleshType == FleshTypeDefOf.Insectoid).ToList();
             humanMeats = meats.Where(x => x.ingestible?.sourceDef?.race?.Humanlike == true).ToList();
             animalMeats = meats.Except(insectMeats).Except(humanMeats).ToList();
 
-            SettingHandle<T> GetSettingHandle<T>(string settingName, T defaultValue)
-            {
+            SettingHandle<T> GetSettingHandle<T>(string settingName, T defaultValue) {
                 return Settings.GetHandle(settingName, $"COAA_{settingName}Setting_title".Translate(), $"COAA_{settingName}Setting_description".Translate(), defaultValue);
             }
 
@@ -64,18 +62,15 @@ namespace AssortedAlterations
             BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
         }
 
-        static List<T> DefsFromType<T>(Type type)
-        {
+        static List<T> DefsFromType<T>(Type type) {
             return type.GetFields(BindingFlags.Static | BindingFlags.Public).Select(x => (T) x.GetValue(null)).ToList();
         }
 
-        static void UpdateRecipes(bool isAdd, IEnumerable<ThingDef> recipeUsers, Type recipesType)
-        {
+        static void UpdateRecipes(bool isAdd, IEnumerable<ThingDef> recipeUsers, Type recipesType) {
             UpdateRecipes(isAdd, recipeUsers, DefsFromType<RecipeDef>(recipesType));
         }
 
-        static void UpdateRecipes(bool isAdd, IEnumerable<ThingDef> recipeUsers, List<RecipeDef> recipes)
-        {
+        static void UpdateRecipes(bool isAdd, IEnumerable<ThingDef> recipeUsers, List<RecipeDef> recipes) {
             if (isAdd)
                 foreach (var recipeUser in recipeUsers)
                     recipeUser.AllRecipes.AddRange(recipes);
