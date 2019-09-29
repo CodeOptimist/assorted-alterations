@@ -46,19 +46,8 @@ namespace AssortedAlterations
             pauseOnBeginAssault = GetSettingHandle("pauseOnBeginAssault", true);
 
             ButcherSmallCreature.DefsLoaded();
-
             ButchersCanCountMeat.DefsLoaded();
-            convenientButcherRecipes.OnValueChanged += ButchersCanCountMeat.OnValueChanged_convenientButcherRecipes;
-            convenientButcherRecipes.OnValueChanged(convenientButcherRecipes);
-            countableMeatRecipes.OnValueChanged += ButchersCanCountMeat.OnValueChanged_countableMeatRecipes;
-            countableMeatRecipes.OnValueChanged(countableMeatRecipes);
-
             SeparateInsectCannibalMeals.DefsLoaded();
-            separateCannibalMeals.OnValueChanged += SeparateInsectCannibalMeals.OnValueChanged_separateCannibalMeals;
-            separateCannibalMeals.OnValueChanged(separateCannibalMeals);
-            separateInsectMeals.OnValueChanged += SeparateInsectCannibalMeals.OnValueChanged_separateInsectMeals;
-            separateInsectMeals.OnValueChanged(separateInsectMeals);
-
             BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
         }
 

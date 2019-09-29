@@ -18,6 +18,8 @@ namespace AssortedAlterations
             static readonly Type Bpc_AnimalManager = bpcAssemblies?.Select(x => x.GetType("BetterPawnControl.AnimalManager")).SingleOrDefault(x => x != null);
             static readonly Type Bpc_AnimalLink = bpcAssemblies?.Select(x => x.GetType("BetterPawnControl.AnimalLink")).SingleOrDefault(x => x != null);
             static readonly FieldInfo bpcAnimalLinksField = AccessTools.Field(Bpc_AnimalManager, "links");
+            static readonly FieldInfo playerSettingsField = AccessTools.Field(typeof(Pawn), nameof(Pawn.playerSettings));
+            static readonly PropertyInfo areaRestrictionProperty = AccessTools.Property(typeof(Pawn_PlayerSettings), nameof(Pawn_PlayerSettings.AreaRestriction));
             static readonly CodeInstructionComparer comparer = new CodeInstructionComparer();
 
             public static void DefsLoaded(HarmonyInstance harmonyInst) {
@@ -54,15 +56,13 @@ namespace AssortedAlterations
                     animalLinks.Add(pawnLink);
             }
 
-            static IEnumerable<CodeInstruction> Birth(IEnumerable<CodeInstruction> instructions)
-            {
-                var playerSettingsField = AccessTools.Field(typeof(Pawn), "playerSettings");
+            static IEnumerable<CodeInstruction> Birth(IEnumerable<CodeInstruction> instructions) {
                 var sequence = new List<CodeInstruction> {
                     new CodeInstruction(OpCodes.Ldfld, playerSettingsField),
                     new CodeInstruction(OpCodes.Ldarg_0),
                     new CodeInstruction(OpCodes.Ldfld, playerSettingsField),
-                    new CodeInstruction(OpCodes.Callvirt, AccessTools.Property(typeof(Pawn_PlayerSettings), "AreaRestriction")?.GetGetMethod()),
-                    new CodeInstruction(OpCodes.Callvirt, AccessTools.Property(typeof(Pawn_PlayerSettings), "AreaRestriction")?.GetSetMethod()),
+                    new CodeInstruction(OpCodes.Callvirt, areaRestrictionProperty?.GetGetMethod()),
+                    new CodeInstruction(OpCodes.Callvirt, areaRestrictionProperty?.GetSetMethod()),
                 };
 
                 var codes = instructions.ToList();
@@ -80,16 +80,14 @@ namespace AssortedAlterations
                 return codes.AsEnumerable();
             }
 
-            static IEnumerable<CodeInstruction> Hatch(IEnumerable<CodeInstruction> instructions)
-            {
-                var playerSettingsField = AccessTools.Field(typeof(Pawn), "playerSettings");
+            static IEnumerable<CodeInstruction> Hatch(IEnumerable<CodeInstruction> instructions) {
                 var sequence = new List<CodeInstruction> {
                     new CodeInstruction(OpCodes.Ldfld, playerSettingsField),
                     new CodeInstruction(OpCodes.Ldarg_0),
                     new CodeInstruction(OpCodes.Ldfld), // leave out the field name in case it's ever renamed
                     new CodeInstruction(OpCodes.Ldfld, playerSettingsField),
-                    new CodeInstruction(OpCodes.Callvirt, AccessTools.Property(typeof(Pawn_PlayerSettings), "AreaRestriction")?.GetGetMethod()),
-                    new CodeInstruction(OpCodes.Callvirt, AccessTools.Property(typeof(Pawn_PlayerSettings), "AreaRestriction")?.GetSetMethod()),
+                    new CodeInstruction(OpCodes.Callvirt, areaRestrictionProperty?.GetGetMethod()),
+                    new CodeInstruction(OpCodes.Callvirt, areaRestrictionProperty?.GetSetMethod()),
                 };
 
                 var codes = instructions.ToList();

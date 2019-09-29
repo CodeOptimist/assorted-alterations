@@ -31,7 +31,7 @@ namespace AssortedAlterations
                 }
             }
 
-            [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea), "DoCell")]
+            [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea), nameof(PawnColumnWorker_AllowedArea.DoCell))]
             static class PawnColumnWorker_AllowedArea_DoCell_Patch
             {
                 [HarmonyPostfix]

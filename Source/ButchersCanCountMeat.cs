@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Harmony;
 using RimWorld;
 using Verse;
@@ -9,33 +10,18 @@ namespace AssortedAlterations
     {
         static class ButchersCanCountMeat
         {
-            static List<RecipeDef> countableRecipes, animalRecipes, insectRecipes, humanRecipes;
-            static List<ThingDef> butchers;
+            static readonly List<RecipeDef> countableRecipes = DefsFromType<RecipeDef>(typeof(CountableMeatRecipes));
 
-            public static void DefsLoaded()
-            {
-                countableRecipes = DefsFromType<RecipeDef>(typeof(CountableMeatRecipes));
-                animalRecipes = new List<RecipeDef>
-                    {CountableMeatRecipes.COAA_ButcherAnimalFlesh, CountableMeatRecipes.COAA_ButcherAnimalInsectFlesh, CountableMeatRecipes.COAA_ButcherAnimalHumanFlesh};
-                insectRecipes = new List<RecipeDef>
-                    {CountableMeatRecipes.COAA_ButcherInsectFlesh, CountableMeatRecipes.COAA_ButcherAnimalInsectFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh};
-                humanRecipes = new List<RecipeDef>
-                    {CountableMeatRecipes.COAA_ButcherHumanFlesh, CountableMeatRecipes.COAA_ButcherAnimalHumanFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh};
-                butchers = new List<ThingDef> {RecipeUsers.TableButcher, RecipeUsers.ButcherSpot};
+            public static void DefsLoaded() {
+                var butchers = new List<ThingDef> {RecipeUsers.TableButcher, RecipeUsers.ButcherSpot};
+                convenientButcherRecipes.OnValueChanged += newValue => UpdateRecipes(newValue, butchers, typeof(ConvenientButcherRecipes));
+                convenientButcherRecipes.OnValueChanged(convenientButcherRecipes);
+                countableMeatRecipes.OnValueChanged += newValue => UpdateRecipes(newValue, butchers, typeof(CountableMeatRecipes));
+                countableMeatRecipes.OnValueChanged(countableMeatRecipes);
             }
 
-            public static void OnValueChanged_countableMeatRecipes(bool newvalue)
-            {
-                UpdateRecipes(newvalue, butchers, typeof(CountableMeatRecipes));
-            }
-
-            public static void OnValueChanged_convenientButcherRecipes(bool newvalue)
-            {
-                UpdateRecipes(newvalue, butchers, typeof(ConvenientButcherRecipes));
-            }
-
-            [HarmonyPatch(typeof(RecipeWorkerCounter), "CanCountProducts")]
-            class RecipeWorkerCounter_CanCountProducts_Patch
+            [HarmonyPatch(typeof(RecipeWorkerCounter), nameof(RecipeWorkerCounter.CanCountProducts))]
+            static class RecipeWorkerCounter_CanCountProducts_Patch
             {
                 [HarmonyPostfix]
                 static void AllowCountMeat(ref bool __result, Bill_Production bill) {
@@ -44,9 +30,21 @@ namespace AssortedAlterations
                 }
             }
 
-            [HarmonyPatch(typeof(RecipeWorkerCounter), "CountProducts")]
-            class RecipeWorkerCounter_CountProducts_Patch
+            [HarmonyPatch(typeof(RecipeWorkerCounter), nameof(RecipeWorkerCounter.CountProducts))]
+            static class RecipeWorkerCounter_CountProducts_Patch
             {
+                static readonly List<RecipeDef> insectRecipes = new List<RecipeDef> {
+                    CountableMeatRecipes.COAA_ButcherInsectFlesh, CountableMeatRecipes.COAA_ButcherAnimalInsectFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh
+                };
+
+                static readonly List<RecipeDef> humanRecipes = new List<RecipeDef> {
+                    CountableMeatRecipes.COAA_ButcherHumanFlesh, CountableMeatRecipes.COAA_ButcherAnimalHumanFlesh, CountableMeatRecipes.COAA_ButcherInsectHumanFlesh
+                };
+
+                static readonly List<RecipeDef> animalRecipes = new List<RecipeDef> {
+                    CountableMeatRecipes.COAA_ButcherAnimalFlesh, CountableMeatRecipes.COAA_ButcherAnimalInsectFlesh, CountableMeatRecipes.COAA_ButcherAnimalHumanFlesh
+                };
+
                 [HarmonyPrefix]
                 static bool CountMeat(ref int __result, Bill_Production bill) {
                     if (!countableRecipes.Contains(bill.recipe))
@@ -60,10 +58,7 @@ namespace AssortedAlterations
                     if (animalRecipes.Contains(bill.recipe))
                         meatTypes.Add(animalMeats);
 
-                    var count = 0;
-                    foreach (var meatType in meatTypes)
-                    foreach (var meat in meatType)
-                        count += bill.Map.resourceCounter.GetCount(meat);
+                    var count = meatTypes.SelectMany(meatType => meatType).Sum(meat => bill.Map.resourceCounter.GetCount(meat));
 
                     __result = count;
                     return false;
