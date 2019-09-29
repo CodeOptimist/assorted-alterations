@@ -1,5 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using Harmony;
 using RimWorld;
 using UnityEngine;
@@ -22,18 +25,41 @@ namespace AssortedAlterations
                 }
             }
 
-            [HarmonyPatch(typeof(Dialog_BillConfig), "DoWindowContents")]
-            static class BillConfig_DoWindowContents_Patch
+            [HarmonyPatch(typeof(Dialog_BillConfig), nameof(Dialog_BillConfig.DoWindowContents))]
+            static class Dialog_BillConfig_DoWindowContents_Patch
             {
-                static readonly FieldInfo BillGetter = typeof(Dialog_BillConfig).GetField("bill", BindingFlags.Instance | BindingFlags.NonPublic);
+                static readonly FieldInfo billField = AccessTools.Field(typeof(Dialog_BillConfig), "bill");
 
-                [HarmonyPostfix]
-                static void DrawRadiusDefaultButton(Dialog_BillConfig __instance, Rect inRect)
-                {
-                    var bill = (Bill_Production) BillGetter.GetValue(__instance);
-                    var rect = new Rect(inRect.xMin + 700f, inRect.yMin + 506f, 65f, 24f);
+                [HarmonyTranspiler]
+                static IEnumerable<CodeInstruction> ButtonAfterLabel(IEnumerable<CodeInstruction> instructions) {
+                    var foundListing = -1;
+
+                    var codes = instructions.ToList();
+                    for (var i = 0; i < codes.Count; i++) {
+                        if (codes[i].operand is MethodInfo method && method == AccessTools.Method(typeof(Listing), nameof(Listing.Begin)))
+                            foundListing = i;
+                        if (foundListing == -1) continue;
+
+                        if (codes[i].operand is string str && str == "IngredientSearchRadius") {
+                            codes.InsertRange(
+                                i + 1, new List<CodeInstruction> {
+                                    new CodeInstruction(OpCodes.Ldarg_0),
+                                    codes[foundListing - 2],
+                                    new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Dialog_BillConfig_DoWindowContents_Patch), nameof(DrawRadiusDefaultButton))),
+                                });
+                            break;
+                        }
+                    }
+
+                    return codes.AsEnumerable();
+                }
+
+                static void DrawRadiusDefaultButton(Dialog_BillConfig instance, Listing_Standard listing) {
+                    var rect = listing.GetRect(0);
+                    rect = new Rect(180f, rect.y - 2f, 65f, 24f);
                     if (Widgets.ButtonText(rect, "Default")) {
                         SoundDefOf.Click.PlayOneShotOnCamera();
+                        var bill = (Bill_Production) billField.GetValue(instance);
                         defaultSearchIngredientRadius.Value = bill.ingredientSearchRadius;
                     }
                 }
