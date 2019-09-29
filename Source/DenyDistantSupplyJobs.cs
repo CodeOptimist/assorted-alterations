@@ -28,39 +28,28 @@ namespace AssortedAlterations
             {
                 [HarmonyPostfix]
                 [SuppressMessage("ReSharper", "UnusedParameter.Local")]
-                static void DenySupplyingDistantResources(ref bool __result, Pawn pawn, ThingDefCountClass need, Thing th)
-                {
-                    if (!denyDistantSupplyJobs)
-                        return;
-                    if (!__result)
-                        return;
-                    if (!(DenyDistantSupplyJobs.constructible is Thing constructible))
-                        return;
-                    if (th.IsInValidStorage())
-                        return;
+                static void DenySupplyingDistantResources(ref bool __result, Pawn pawn, ThingDefCountClass need, Thing th) {
+                    if (!denyDistantSupplyJobs) return;
+                    if (!__result) return;
+                    if (!(DenyDistantSupplyJobs.constructible is Thing constructible)) return;
+                    if (th.IsInValidStorage()) return;
+                    if (!StoreUtility.TryFindBestBetterStoreCellFor(th, pawn, pawn.Map, StoragePriority.Unstored, pawn.Faction, out var storeCell, false)) return;
 
-                    // ReSharper disable once UnusedVariable
-                    if (!StoreUtility.TryFindBestBetterStorageFor(th, pawn, pawn.Map, StoragePriority.Unstored, pawn.Faction, out var storeCell, out var haulDest))
-                        return;
-
-                    var supplyFromThisDist = th.Position.DistanceTo(constructible.Position);
+                    var supplyFromHereDist = th.Position.DistanceTo(constructible.Position);
                     var supplyFromStoreDist = storeCell.DistanceTo(constructible.Position);
 
-                    // if this is closer to what we're constructing than if we first hauled it to storage
-                    if (supplyFromThisDist < supplyFromStoreDist)
-                        return; // go ahead and supply directly from this
-
-                    // otherwise ...
-                    // this thing would be closer to our constructible once stored, so let's exclude it from consideration so that a
+                    // if it's closer to our constructible once stored, let's exclude it from consideration so that a
                     // Haul (rather than Supply) job will retrieve it *and* any adjacent resources via Mehni's "Pick Up And Haul"
                     // https://steamcommunity.com/sharedfiles/filedetails/?id=1279012058
 
                     // and with kevlou's "While You're Up" if our pawn is sufficiently close we'll end up grabbing this *anyway*
-                    // simply on our WAY to the stockpile we'll now be supplying from (provided we're headed that way, e.g. it has resources)
+                    // simply on our WAY to the stockpile we'd now be supplying from (provided we're headed that way, e.g. it has resources)
                     // https://steamcommunity.com/sharedfiles/filedetails/?id=1544626521
 
-                    Debug.WriteLine($"'{pawn}' denied supply job for '{th.Label}' because '{haulDest}' is closer.");
-                    __result = false;
+                    if (supplyFromStoreDist < supplyFromHereDist)
+                        __result = false;
+
+                    Debug.WriteLine($"'{pawn}' denied supply job for '{th.Label}' because '{storeCell.GetSlotGroup(pawn.Map).parent}' is closer.");
                 }
             }
         }
