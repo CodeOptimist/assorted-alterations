@@ -6,6 +6,13 @@
     <linkUrl>https://codeoptimism.com/proj/83/</linkUrl>
   </HugsLib.UpdateFeatureDef>
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>COAssortedAlterations_1_5_1</defName>
+    <assemblyVersion>1.5.1</assemblyVersion>
+    <content>
+      Fixed recipes, meals, and mod compatibility when language set to other than English.
+    </content>
+  </HugsLib.UpdateFeatureDef>
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_5_0</defName>
     <assemblyVersion>1.5.0</assemblyVersion>
     <content><![CDATA[<color=teal><b>Pause on "beginning their assault".</b></color>

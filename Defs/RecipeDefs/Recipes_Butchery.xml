@@ -39,6 +39,9 @@
 
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherSmallCreatureFlesh</defName>
+    <label>butcher small creature</label>
+    <description>Butcher a small creature to obtain its meat, leather, and other body products.</description>
+    <jobString>Butchering small creature.</jobString>
     <fixedIngredientFilter>
       <categories>
         <li>Corpses</li>
@@ -48,6 +51,9 @@
 
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherAnimalFlesh</defName>
+    <label>butcher animal</label>
+    <description>Butcher an animal to obtain its meat, leather, and other body products.\n\nSelecting "Do until" will only count animal meat.</description>
+    <jobString>Butchering animal.</jobString>
     <fixedIngredientFilter>
       <categories>
         <li>CorpsesAnimal</li>
@@ -60,6 +66,9 @@
 
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherInsectFlesh</defName>
+    <label>butcher insect</label>
+    <description>Butcher an insect to obtain its meat, leather, and other body products.\n\nSelecting "Do until" will only count insect meat.</description>
+    <jobString>Butchering insect.</jobString>
     <fixedIngredientFilter>
       <categories>
         <li>CorpsesInsect</li>
@@ -69,6 +78,9 @@
 
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherHumanFlesh</defName>
+    <label>butcher human</label>
+    <description>Butcher a human to obtain its meat, leather, and other body products.\n\nSelecting "Do until" will only count human meat.</description>
+    <jobString>Butchering human.</jobString>
     <fixedIngredientFilter>
       <categories>
         <li>CorpsesHumanlike</li>
@@ -78,6 +90,9 @@
 
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherAnimalInsectFlesh</defName>
+    <label>butcher animal or insect</label>
+    <description>Butcher an animal or insect to obtain its meat, leather, and other body products.\n\nSelecting "Do until" will only count animal and insect meat.</description>
+    <jobString>Butchering.</jobString>
     <fixedIngredientFilter>
       <categories>
         <li>CorpsesAnimal</li>
@@ -87,6 +102,9 @@
 
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherAnimalHumanFlesh</defName>
+    <label>butcher animal or human</label>
+    <description>Butcher an animal or human to obtain its meat, leather, and other body products.\n\nSelecting "Do until" will only count animal and human meat.</description>
+    <jobString>Butchering.</jobString>
     <fixedIngredientFilter>
       <categories>
         <li>CorpsesAnimal</li>
@@ -100,6 +118,9 @@
 
   <RecipeDef ParentName="COAA_ButcherCorpseFleshBase">
     <defName>COAA_ButcherInsectHumanFlesh</defName>
+    <label>butcher insect or human</label>
+    <description>Butcher an insect or human to obtain its meat, leather, and other body products.\n\nSelecting "Do until" will only count insect and human meat.</description>
+    <jobString>Butchering.</jobString>
     <fixedIngredientFilter>
       <categories>
         <li>CorpsesInsect</li>
