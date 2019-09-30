@@ -42,8 +42,8 @@ namespace AssortedAlterations
             separateCannibalMeals = GetSettingHandle("separateCannibalMeals", true);
             separateInsectMeals = GetSettingHandle("separateInsectMeals", true);
             scrollRestrictPawns = GetSettingHandle("scrollRestrictPawns", true);
-            betterPawnControl_Birth = GetSettingHandle("betterPawnControl_Birth", true);
             pauseOnBeginAssault = GetSettingHandle("pauseOnBeginAssault", true);
+            betterPawnControl_Birth = GetSettingHandle("betterPawnControl_Birth", true);
 
             ButcherSmallCreature.DefsLoaded();
             ButchersCanCountMeat.DefsLoaded();
