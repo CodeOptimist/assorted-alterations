@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version='1.0' encoding='UTF-8'?>
 <ModMetaData>
   <name>CodeOptimist's Assorted Alterations</name>
   <author>CodeOptimist</author>
@@ -7,36 +6,27 @@
   <supportedVersions>
     <li>1.0</li>
   </supportedVersions>
-  <description>
-<![CDATA[
-<size=20>Quality of life modifications.</size>
+  <description><![CDATA[<color=teal><b>Deny distant material supply jobs.</b></color>
+Won't supply directly from a resource if hauling it to storage would bring it closer to the given blueprint.
+(Recommended with <color=grey><b><i>Mehni's</i> Pick Up And Haul</b></color> as only haul jobs utilize inventory.)
 
-<color=teal><b>Deny distant material supply jobs.</b></color>
-<i>Dry those tears, builders will no longer traverse the entire map for a single component per heater.</i>
-Won't supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with <color=grey><b><i>Mehni's</i> Pick Up And Haul</b></color>.)
-
-<color=teal><b>Set default ingredient radius.</b></color>
-<i>One less thing to do <b>every, single, time</b>.</i>
+<color=teal><b>Default ingredient search radius.</b></color>
+New bills will be created with this radius.
 
 <color=teal><b>Pause on "beginning their assault".</b></color>
+When a staged attack actually commences, not just appears.
 
 <color=teal><b>Shift+scroll cycle area restrictions.</b></color>
 Shift + scroll wheel on area restrictions will cycle them for all listed pawns (colonist or animal).
 Also recommended: <color=grey><b><i>VouLT's</i> Better Pawn Control</b></color> for policies.
 
-<color=teal><b>Butcher small creatures to conserve freezer space.</b></color>
-<i>Leather and meat without worry.</i>
-Calculates <= 75 meat yielding creatures.
+<color=teal><b>Butcher small creatures.</b></color>
+Conserve freezer space with a <= 75 meat yielding creature recipe.
 
-<color=teal><b>Separate butcher recipes to correctly count meat.</b></color>
-<i>Make just what you need; automate your longpig clothing line!</i>
+<color=teal><b>Meat-counting butcher recipes.</b></color>
 Different recipes to count various combinations of animal, human, and insect.
 
 <color=teal><b>Separate cannibal and insect meals to avoid ingredient mixing.</b></color>
-<i>Never again suffer through a single meal contaminating entire stacks.
-Feed your favorite brute just what she likes!
-Insects to breed and prisoners to feed!</i>
-
 Supports non-vanilla insectoid and humanlike.
 Disallowed in starting food restrictions by default.
 
@@ -44,17 +34,7 @@ To preserve balance these extra meal types have:
 * Disabled generation (e.g. resource pod drop, map prisoner cell spawn).
 * Disabled buying (trade stock generation).
 * Disabled scatter on map generation.
-<i>Only took 5 hours to study every call to <b>AllDefs</b>...</i>
 
-
-A heartfelt thanks for addressing these problems initially:
-* <color=grey><b><i>Rock5's</i> Butchers Can Count Meat</b></color>
-* <color=grey><b><i>Tremeloe's</i> Cook Cannibal Meal (IndividualStack)</b></color>
-
-<size=20>Hello World!</size>
-
-As a programmer who loves this game, I wanted to finally share the improvements and tweaks I've benefited from back to the community, just as so many other modders have improved my experience. I love the small modifications to vanilla that have a huge impact, and am proud to be in the company of others passionate about not necessarily new guns and mechanics and effects, but quality of life on the Rim.
-- <color=silver><i>Christopher Galpin (CodeOptimist)</i></color>
-]]>
-  </description>
+<color=teal><b>Patch <color=grey><b>Better Pawn Control</b></color> for newborns.</b></color>
+Hatched and birthed animals will inherit the entire restriction policy of their parent.]]></description>
 </ModMetaData>

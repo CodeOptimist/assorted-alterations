@@ -1,85 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version='1.0' encoding='UTF-8'?>
 <Defs>
   <HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
     <modNameReadable>CodeOptimist's Assorted Alterations</modNameReadable>
     <modIdentifier>COAssortedAlterations</modIdentifier>
     <linkUrl>https://codeoptimism.com/proj/83/</linkUrl>
   </HugsLib.UpdateFeatureDef>
-
-
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_5_0</defName>
     <assemblyVersion>1.5.0</assemblyVersion>
-    <content>
-      <![CDATA[
-Added feature: Pause game on "beginning their assault".
-    ]]>
-    </content>
+    <content><![CDATA[<color=teal><b>Pause on "beginning their assault".</b></color>
+When a staged attack actually commences, not just appears.
+]]></content>
   </HugsLib.UpdateFeatureDef>
-
-
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_4_0</defName>
     <assemblyVersion>1.4.0</assemblyVersion>
-    <content>
-      <![CDATA[
-Patched Better Pawn Control for hatched/birthed animals to inherit the entire policy of their parent.
-    ]]>
-    </content>
+    <content><![CDATA[<color=teal><b>Patch <color=grey><b>Better Pawn Control</b></color> for newborns.</b></color>
+Hatched and birthed animals will inherit the entire restriction policy of their parent.
+]]></content>
   </HugsLib.UpdateFeatureDef>
-
-
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_3_0</defName>
     <assemblyVersion>1.3.0</assemblyVersion>
-    <content>
-      <![CDATA[
+    <content><![CDATA[<color=teal><b>Shift+scroll cycle area restrictions.</b></color>
 Shift + scroll wheel on area restrictions will cycle them for all listed pawns (colonist or animal).
 Also recommended: <color=grey><b><i>VouLT's</i> Better Pawn Control</b></color> for policies.
-    ]]>
-    </content>
+]]></content>
   </HugsLib.UpdateFeatureDef>
-
-
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_2_0</defName>
     <assemblyVersion>1.2.0</assemblyVersion>
     <content>
-      <![CDATA[
-Butchers now include non-vanilla insectoid and humanlike in their counts.
-Butcher small creature recipe is now calculated and will work with content mods.
-    ]]>
+      Butchers now include non-vanilla insectoid and humanlike in their counts.
+      Butcher small creature recipe is now calculated and will work with content mods.
     </content>
   </HugsLib.UpdateFeatureDef>
-
-
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_1_0</defName>
     <assemblyVersion>1.1.0</assemblyVersion>
     <content>
-      <![CDATA[
-Cannibal and insect meal separation now supports non-vanilla insectoid and humanlike.
-<i>Thanks @lbmaian for the suggestion.</i>
-    ]]>
+      Cannibal and insect meal separation now supports non-vanilla insectoid and humanlike.
+      &lt;i&gt;Thanks @lbmaian for the suggestion.&lt;/i&gt;
     </content>
   </HugsLib.UpdateFeatureDef>
-
-
   <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
     <defName>COAssortedAlterations_1_0_0</defName>
     <assemblyVersion>1.0.0</assemblyVersion>
-    <content>
-      <![CDATA[
-Deny distant material supply jobs.
-<i>Do not supply directly from a resource if hauling it to storage would bring it closer to the given blueprint. (Recommended with <b>Pick Up And Haul</b>.)</i>
-|img:radius|caption:Set default ingredient radius.
-|img:CannibalMeals/Simple/Simple_a,CannibalMeals/Fine/Fine_a,CannibalMeals/Lavish/Lavish_a,CannibalMeals/SurvivalPack/SurvivalPack_a,CannibalMeals/Pemmican/Pemmican_b|caption:<i>Cannibal meals.</i>
-|img:InsectMeals/Simple/Simple_a,InsectMeals/Fine/Fine_a,InsectMeals/Lavish/Lavish_a,InsectMeals/SurvivalPack/SurvivalPack_a,InsectMeals/Pemmican/Pemmican_b|caption:<i>Insect meals.</i>
-|Separate butcher recipes will correctly count meat.
-Butcher small creatures to conserve freezer space.
-Separate cannibal and insect meals will avoid ingredient mixing.
-    ]]>
-    </content>
+    <content><![CDATA[<color=teal><b>Deny distant material supply jobs.</b></color>
+Won't supply directly from a resource if hauling it to storage would bring it closer to the given blueprint.
+(Recommended with <color=grey><b><i>Mehni's</i> Pick Up And Haul</b></color> as only haul jobs utilize inventory.)
+
+<color=teal><b>Default ingredient search radius.</b></color>
+New bills will be created with this radius.
+
+<color=teal><b>Butcher small creatures.</b></color>
+Conserve freezer space with a <= 75 meat yielding creature recipe.
+
+<color=teal><b>Meat-counting butcher recipes.</b></color>
+Different recipes to count various combinations of animal, human, and insect.
+
+<color=teal><b>Separate cannibal and insect meals to avoid ingredient mixing.</b></color>
+Supports non-vanilla insectoid and humanlike.
+Disallowed in starting food restrictions by default.
+
+To preserve balance these extra meal types have:
+* Disabled generation (e.g. resource pod drop, map prisoner cell spawn).
+* Disabled buying (trade stock generation).
+* Disabled scatter on map generation.
+]]></content>
   </HugsLib.UpdateFeatureDef>
 </Defs>
