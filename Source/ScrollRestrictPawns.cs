@@ -17,7 +17,7 @@ namespace AssortedAlterations
         {
             // TD Enhancement Pack
             static readonly List<Assembly> tdAssemblies = LoadedModManager.RunningMods.SingleOrDefault(x => x.Identifier == "1339135272")?.assemblies.loadedAssemblies;
-            static readonly Type Td_DoAllowedAreaSelectors_Patch = tdAssemblies?.Select(x => x.GetType("TD_Enhancement_Pack.DoAllowedAreaSelectors_AreaOrder")).SingleOrDefault(x => x != null);
+            static readonly Type Td_DoAllowedAreaSelectors_Patch = tdAssemblies?.Select(x => x.GetType("TD_Enhancement_Pack.DoAllowedAreaSelectors_Patch")).SingleOrDefault(x => x != null);
 
             [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea), "GetHeaderTip")]
             static class PawnColumnWorker_AllowedArea_GetHeaderTip_Patch
