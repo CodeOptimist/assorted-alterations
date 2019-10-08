@@ -15,6 +15,13 @@ features:
   settings:
     - name: denyDistantSupplyJobs
 
+- title: Settlement restock indicator.
+  at: 1.6.0
+  desc: |-
+   Restock countdown for each settlement on world map (appears after trade).
+  settings:
+    - name: restockIndicator
+
 - title: Default ingredient search radius.
   at: 1.0.0
   desc: |-

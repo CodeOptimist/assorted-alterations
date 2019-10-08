@@ -20,7 +20,8 @@ namespace AssortedAlterations
             separateInsectMeals,
             scrollRestrictPawns,
             betterPawnControl_Birth,
-            pauseOnBeginAssault;
+            pauseOnBeginAssault,
+            restockIndicator;
 
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
         public override string ModIdentifier => "COAssortedAlterations";
@@ -43,12 +44,14 @@ namespace AssortedAlterations
             separateInsectMeals = GetSettingHandle("separateInsectMeals", true);
             scrollRestrictPawns = GetSettingHandle("scrollRestrictPawns", true);
             pauseOnBeginAssault = GetSettingHandle("pauseOnBeginAssault", true);
+            restockIndicator = GetSettingHandle("restockIndicator", true);
             betterPawnControl_Birth = GetSettingHandle("betterPawnControl_Birth", true);
 
             ButcherSmallCreature.DefsLoaded();
             ButchersCanCountMeat.DefsLoaded();
             SeparateInsectCannibalMeals.DefsLoaded();
             Mod_BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
+            RestockIndicator.DefsLoaded();
         }
 
         static List<T> DefsFromType<T>(Type type) {
