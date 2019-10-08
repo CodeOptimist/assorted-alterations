@@ -102,6 +102,14 @@ features:
   settings:
     - name: betterPawnControl_Birth
 
+- title: |-
+    Patch [url=https://steamcommunity.com/sharedfiles/filedetails/?id=754637870]Quality Builder[/url] to preserve forbidden.
+  at: 1.6.0
+  desc: |-
+    Patches a bug in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=754637870][i]Hatti[/i]'s Quality Builder[/url] where the quality designation overwrites forbidden on game load.
+  settings:
+    - name: qualityBuilder_Forbidden
+
 footer: |-
 
   A heartfelt thanks for addressing these problems initially:

@@ -20,12 +20,13 @@ namespace AssortedAlterations
             separateInsectMeals,
             scrollRestrictPawns,
             betterPawnControl_Birth,
+            qualityBuilder_Forbidden,
             pauseOnBeginAssault,
             restockIndicator;
 
         static List<ThingDef> insectMeats, humanMeats, animalMeats;
         public override string ModIdentifier => "COAssortedAlterations";
-
+        
         public override void DefsLoaded() {
             var meats = ThingCategoryDefOf.MeatRaw.childThingDefs;
             insectMeats = meats.Where(x => x.ingestible?.sourceDef?.race?.FleshType == FleshTypeDefOf.Insectoid).ToList();
@@ -46,11 +47,13 @@ namespace AssortedAlterations
             pauseOnBeginAssault = GetSettingHandle("pauseOnBeginAssault", true);
             restockIndicator = GetSettingHandle("restockIndicator", true);
             betterPawnControl_Birth = GetSettingHandle("betterPawnControl_Birth", true);
+            qualityBuilder_Forbidden = GetSettingHandle("qualityBuilder_Forbidden", true);
 
             ButcherSmallCreature.DefsLoaded();
             ButchersCanCountMeat.DefsLoaded();
             SeparateInsectCannibalMeals.DefsLoaded();
             Mod_BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
+            Mod_QualityBuilder_Forbidden.DefsLoaded(HarmonyInst);
             RestockIndicator.DefsLoaded();
         }
 
