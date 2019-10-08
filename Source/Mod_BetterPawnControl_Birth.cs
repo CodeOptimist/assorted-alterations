@@ -23,7 +23,7 @@ namespace AssortedAlterations
             static readonly CodeInstructionComparer comparer = new CodeInstructionComparer();
 
             public static void DefsLoaded(HarmonyInstance harmonyInst) {
-                if (BpcAnimalManagerType == null || BpcAnimalLinkType == null)    // || !BpcAnimalManagerType.Assembly.ImageRuntimeVersion.StartsWith("v2.0"))
+                if (BpcAnimalManagerType == null || BpcAnimalLinkType == null)  // || !BpcAnimalManagerType.Assembly.GetName().Version.ToString().StartsWith("1.9.2.")
                     return;
                 if (PlayerSettings == null || AreaRestriction == null)
                     return;
@@ -43,15 +43,16 @@ namespace AssortedAlterations
 
                 var pawnLinks = (from object animalLink in animalLinks
                     let animal = (Pawn) AccessTools.Field(BpcAnimalLinkType, "animal").GetValue(animalLink)
+                    let isObedient = pawn.training?.HasLearned(TrainableDefOf.Obedience)
                     where animal == parent
                     select Activator.CreateInstance(
                         BpcAnimalLinkType,
                         (int) AccessTools.Field(BpcAnimalLinkType, "zone").GetValue(animalLink),
                         pawn,
-                        AccessTools.Field(BpcAnimalLinkType, "master").GetValue(animalLink),
+                        isObedient == true ? (Pawn) AccessTools.Field(BpcAnimalLinkType, "master").GetValue(animalLink) : null,
                         (Area) AccessTools.Field(BpcAnimalLinkType, "area").GetValue(animalLink),
-                        (bool)AccessTools.Field(BpcAnimalLinkType, "followDrafted").GetValue(animalLink),
-                        (bool)AccessTools.Field(BpcAnimalLinkType, "followFieldwork").GetValue(animalLink),
+                        pawn.playerSettings?.followDrafted ?? default,
+                        pawn.playerSettings?.followFieldwork ?? default,
                         (int) AccessTools.Field(BpcAnimalLinkType, "mapId").GetValue(animalLink))).ToList();
 
                 foreach (var pawnLink in pawnLinks)
