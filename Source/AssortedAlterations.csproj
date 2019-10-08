@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssortedAlterations.cs" />
-    <Compile Include="BetterPawnControl_Birth.cs" />
+    <Compile Include="Mod_BetterPawnControl_Birth.cs" />
     <Compile Include="ButchersCanCountMeat.cs" />
     <Compile Include="ButcherSmallCreature.cs" />
     <Compile Include="Defs.cs" />

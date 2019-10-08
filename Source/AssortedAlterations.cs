@@ -48,7 +48,7 @@ namespace AssortedAlterations
             ButcherSmallCreature.DefsLoaded();
             ButchersCanCountMeat.DefsLoaded();
             SeparateInsectCannibalMeals.DefsLoaded();
-            BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
+            Mod_BetterPawnControl_Birth.DefsLoaded(HarmonyInst);
         }
 
         static List<T> DefsFromType<T>(Type type) {

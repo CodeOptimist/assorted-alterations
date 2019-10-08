@@ -17,7 +17,7 @@ namespace AssortedAlterations
         {
             // TD Enhancement Pack
             static readonly List<Assembly> tdAssemblies = LoadedModManager.RunningMods.SingleOrDefault(x => x.Identifier == "1339135272")?.assemblies.loadedAssemblies;
-            static readonly Type Td_DoAllowedAreaSelectors_Patch = tdAssemblies?.Select(x => x.GetType("TD_Enhancement_Pack.DoAllowedAreaSelectors_Patch")).SingleOrDefault(x => x != null);
+            static readonly Type TdDoAllowedAreaSelectors_PatchType = tdAssemblies?.Select(x => x.GetType("TD_Enhancement_Pack.DoAllowedAreaSelectors_Patch")).SingleOrDefault(x => x != null);
 
             [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea), "GetHeaderTip")]
             static class PawnColumnWorker_AllowedArea_GetHeaderTip_Patch
@@ -43,8 +43,8 @@ namespace AssortedAlterations
 
                     bool AssignableAsAllowed(Area area) {
                         // TD Enhancement Pack
-                        if (AccessTools.Method(Td_DoAllowedAreaSelectors_Patch, "AssignableAsAllowedForPawn") is MethodInfo methodInfo)
-                            return (bool) methodInfo.Invoke(null, new object[] {area, pawn});
+                        if (AccessTools.Method(TdDoAllowedAreaSelectors_PatchType, "AssignableAsAllowedForPawn") is MethodInfo method)
+                            return (bool) method.Invoke(null, new object[] {area, pawn});
                         return area.AssignableAsAllowed();
                     }
 
