@@ -30,20 +30,12 @@ namespace AssortedAlterations
                 separateCannibalMeals.OnValueChanged += value => {
                     UpdateRecipes(value, stoves, cannibalRecipes);
                     UpdateRecipes(value, campfire, new List<RecipeDef> {CannibalRecipes.COAA_CookCannibalMealSimple, CannibalRecipes.COAA_MakeCannibalPemmican});
-
-                    foreach (var recipe in DefsFromType<RecipeDef>(typeof(FoodRecipes)))
-                    foreach (var humanMeat in humanMeats)
-                        recipe.fixedIngredientFilter.SetAllow(humanMeat, !value);
                 };
                 separateCannibalMeals.OnValueChanged(separateCannibalMeals);
 
                 separateInsectMeals.OnValueChanged += value => {
                     UpdateRecipes(value, stoves, insectRecipes);
                     UpdateRecipes(value, campfire, new List<RecipeDef> {InsectRecipes.COAA_CookInsectMealSimple, InsectRecipes.COAA_MakeInsectPemmican});
-
-                    foreach (var recipe in DefsFromType<RecipeDef>(typeof(FoodRecipes)))
-                    foreach (var insectMeat in insectMeats)
-                        recipe.fixedIngredientFilter.SetAllow(insectMeat, !value);
                 };
                 separateInsectMeals.OnValueChanged(separateInsectMeals);
             }

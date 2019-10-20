@@ -1,8 +1,8 @@
 ﻿---
-header: |-
-  [h1]Like this? Try my [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1871338921]Stockpile & Ingredient Filters[/url] mod![/h1]
-
-  [h1]Quality of life modifications.[/h1]
+repo: https://github.com/CodeOptimist/assorted-alterations
+heading: Assorted Alterations
+desc: |-
+  Vanilla quality of life improvements; patches of popular mods.
 
 features:
 - title: Deny distant material supply jobs.
@@ -110,14 +110,26 @@ features:
   settings:
     - name: qualityBuilder_Forbidden
 
-footer: |-
+- at: 1.1.0
+  desc: |-
+    Cannibal and insect meal separation now supports non-vanilla insectoid and humanlike.
+    [i]Thanks @lbmaian for the suggestion.[/i]
 
+- at: 1.2.0
+  desc: |-
+    Butchers now include non-vanilla insectoid and humanlike in their counts.
+    Butcher small creature recipe is now calculated and will work with content mods.
+
+- at: 1.5.1
+  desc: |-
+    Fixed recipes, meals, and mod compatibility when language isn't set to English.
+
+- at: 1.6.1
+  desc: |-
+    For mod compatibility the insect and cannibal meal settings no longer hide "insect meat" and "human meat" from vanilla recipes.
+    [i]Thanks @Mistletoe.[/i]
+
+footer: |-
   A heartfelt thanks for addressing these problems initially:
   * [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1211976907][i]Rock5's[/i] Butchers Can Count Meat[/url]
   * [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1297883744][i]Tremeloe's[/i] Cook Cannibal Meal (IndividualStack)[/url]
-
-  [h1][url=https://github.com/CodeOptimist/assorted-alterations]GitHub[/url] [url=https://github.com/CodeOptimist/assorted-alterations/issues]Report issues![/url][/h1]
-
-  [h1]Hello World![/h1]
-  As a programmer who loves this game, I wanted to finally share the improvements and tweaks I've benefited from back to the community, just as so many other modders have improved my experience. I love the small modifications to vanilla that have a huge impact, and am proud to be in the company of others passionate about not necessarily new guns and mechanics and effects, but quality of life on the Rim.
-  - [url=https://codeoptimism.com][i]Christopher Galpin (CodeOptimist)[/i][/url]
