@@ -61,10 +61,6 @@ namespace AssortedAlterations
             return type.GetFields(BindingFlags.Static | BindingFlags.Public).Select(x => (T) x.GetValue(null)).ToList();
         }
 
-        static void UpdateRecipes(bool isAdd, IEnumerable<ThingDef> recipeUsers, Type recipesType) {
-            UpdateRecipes(isAdd, recipeUsers, DefsFromType<RecipeDef>(recipesType));
-        }
-
         static void UpdateRecipes(bool isAdd, IEnumerable<ThingDef> recipeUsers, List<RecipeDef> recipes) {
             if (isAdd)
                 foreach (var recipeUser in recipeUsers)

@@ -10,13 +10,16 @@ namespace AssortedAlterations
     {
         static class ButchersCanCountMeat
         {
-            static readonly List<RecipeDef> countableRecipes = DefsFromType<RecipeDef>(typeof(CountableMeatRecipes));
+            static List<RecipeDef> countableRecipes, convenientRecipes;
 
             public static void DefsLoaded() {
+                countableRecipes = DefsFromType<RecipeDef>(typeof(CountableMeatRecipes));
+                convenientRecipes = DefsFromType<RecipeDef>(typeof(ConvenientButcherRecipes));
+
                 var butchers = new List<ThingDef> {RecipeUsers.TableButcher, RecipeUsers.ButcherSpot};
-                convenientButcherRecipes.OnValueChanged += newValue => UpdateRecipes(newValue, butchers, typeof(ConvenientButcherRecipes));
+                convenientButcherRecipes.OnValueChanged += newValue => UpdateRecipes(newValue, butchers, convenientRecipes);
                 convenientButcherRecipes.OnValueChanged(convenientButcherRecipes);
-                countableMeatRecipes.OnValueChanged += newValue => UpdateRecipes(newValue, butchers, typeof(CountableMeatRecipes));
+                countableMeatRecipes.OnValueChanged += newValue => UpdateRecipes(newValue, butchers, countableRecipes);
                 countableMeatRecipes.OnValueChanged(countableMeatRecipes);
             }
 
